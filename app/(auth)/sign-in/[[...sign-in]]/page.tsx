@@ -3,8 +3,9 @@ import { SignIn } from "@clerk/nextjs";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Signin - Editing Blocks",
-  description: "",
+  title: "Sign-in – Editing Blocks",
+  description:
+    "Log in to Editing Blocks to access your collaborative workspace. Continue working on documents with your team in real time.",
 };
 
 export default function SignInPage() {
