@@ -4,6 +4,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import { ClerkProvider } from "@clerk/nextjs";
 import { dark } from "@clerk/themes";
+import NextTopLoader from "nextjs-toploader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -37,6 +38,13 @@ export default function RootLayout({
           className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
         >
           <ThemeProvider attribute="class" defaultTheme="system">
+            <NextTopLoader
+              color="#6366f1"
+              height={3}
+              speed={200}
+              showSpinner={true}
+            />
+
             {children}
           </ThemeProvider>
         </body>
