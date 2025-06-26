@@ -190,6 +190,16 @@
   --color-shadow-color: var(--shadow-color);
 }
 
+@layer utilities {
+  .flex-col {
+    @apply flex flex-col justify-center items-center;
+  }
+
+  .flex-center {
+    @apply flex justify-center items-center;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
