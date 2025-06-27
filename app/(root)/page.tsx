@@ -9,6 +9,7 @@ const Home = () => {
     <div className="flex justify-center flex-col gap-4 items-center min-h-screen w-screen">
       <Button>Button</Button>
       <Link href={"/sign-up"}>Signup</Link>
+      <Link href={"/documents/document-id-goes-here"}>Documents</Link>
     </div>
   );
 };
