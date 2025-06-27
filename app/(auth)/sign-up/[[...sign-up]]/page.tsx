@@ -1,5 +1,4 @@
 import { Metadata } from "next";
-import { AuthLayout } from "@/components/layouts";
 import { SignUp } from "@clerk/nextjs";
 
 export const metadata: Metadata = {
@@ -9,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default async function SignupPage() {
-  return (
-    <AuthLayout>
-      <SignUp afterSignUpUrl={"/"} forceRedirectUrl={"/"} />
-    </AuthLayout>
-  );
+  return <SignUp afterSignUpUrl={"/"} forceRedirectUrl={"/"} />;
 }

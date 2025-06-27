@@ -1,4 +1,3 @@
-import { AuthLayout } from "@/components/layouts";
 import { SignIn } from "@clerk/nextjs";
 import { Metadata } from "next";
 
@@ -9,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function SignInPage() {
-  return (
-    <AuthLayout>
-      <SignIn afterSignInUrl="/" redirectUrl="/sign-in" />
-    </AuthLayout>
-  );
+  return <SignIn afterSignInUrl="/" redirectUrl="/sign-in" />;
 }
