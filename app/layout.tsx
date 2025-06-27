@@ -32,6 +32,8 @@ export default function RootLayout({
       appearance={{
         baseTheme: dark,
       }}
+      afterSignOutUrl={"/sign-in"}
+      
     >
       <html lang="en" suppressHydrationWarning>
         <body

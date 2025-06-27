@@ -2,7 +2,7 @@ interface IAuthLayout {
   children: React.ReactNode;
 }
 
-const AuthLayout = ({ children }: IAuthLayout) => {
+const AuthLayout = async ({ children }: IAuthLayout) => {
   return (
     <div className="min-h-screen w-screen bg-background flex-col">
       {children}

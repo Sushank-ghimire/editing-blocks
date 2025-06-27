@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function SignInPage() {
   return (
     <AuthLayout>
-      <SignIn />
+      <SignIn afterSignInUrl="/" redirectUrl="/sign-in" />
     </AuthLayout>
   );
 }

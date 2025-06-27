@@ -1,6 +1,6 @@
+import { Metadata } from "next";
 import { AuthLayout } from "@/components/layouts";
 import { SignUp } from "@clerk/nextjs";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Signup – Editing Blocks",
@@ -8,11 +8,10 @@ export const metadata: Metadata = {
     "Join Editing Blocks and start creating and editing documents collaboratively. Work together with your team in real time, organize ideas, and boost productivity.",
 };
 
-
-export default function SignupPage() {
+export default async function SignupPage() {
   return (
     <AuthLayout>
-      <SignUp />
+      <SignUp afterSignUpUrl={"/"} forceRedirectUrl={"/"} />
     </AuthLayout>
   );
 }
