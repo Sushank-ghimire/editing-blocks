@@ -1,12 +1,10 @@
-"use client";
-import Editor from "@/components/editor/Editor";
-import { useParams } from "next/navigation";
-
-export default function DocumentsPage() {
-  const params = useParams();
-  return (
-    <main className="">
-      <Editor />
-    </main>
-  );
+interface IDocumentPageProps {
+  params: Promise<{ slug: string }>;
 }
+
+const DocumentPage = async ({ params }: IDocumentPageProps) => {
+  const param = await params;
+  return <div>Document ID : {param.slug}</div>;
+};
+
+export default DocumentPage;
