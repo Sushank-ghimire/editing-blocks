@@ -1,6 +1,6 @@
 import Image from "next/image";
 
-export const Loader = () => {
+const Loader = () => {
   return (
     <div className="h-screen w-screen flex justify-center items-center">
       <Image
@@ -14,3 +14,5 @@ export const Loader = () => {
     </div>
   );
 };
+
+export default Loader;

@@ -11,10 +11,11 @@
   "dependencies": {
     "@clerk/nextjs": "^6.23.1",
     "@clerk/themes": "^2.2.52",
-    "@lexical/react": "^0.32.1",
     "@lexical/rich-text": "^0.32.1",
-    "@liveblocks/react-lexical": "^3.0.0",
     "@radix-ui/react-slot": "^1.2.3",
+    "@tiptap/pm": "^2.23.0",
+    "@tiptap/react": "^2.23.0",
+    "@tiptap/starter-kit": "^2.23.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "lexical": "^0.32.1",
