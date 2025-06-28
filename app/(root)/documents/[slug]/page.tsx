@@ -7,10 +7,9 @@ interface IDocumentPageProps {
 const DocumentPage = async ({ params }: IDocumentPageProps) => {
   const param = await params;
   return (
-    <div>
-      Document ID : {param.slug}
+    <section className="min-h-screen w-screen">
       <Editor />
-    </div>
+    </section>
   );
 };
 
