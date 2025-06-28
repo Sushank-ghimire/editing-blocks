@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function SignInPage() {
-  return <SignIn afterSignInUrl="/" redirectUrl="/sign-in" />;
+  return <SignIn forceRedirectUrl="/" afterSignInUrl={"/"} />;
 }

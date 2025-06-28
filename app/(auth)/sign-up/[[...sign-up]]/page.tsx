@@ -8,5 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default async function SignupPage() {
-  return <SignUp afterSignUpUrl={"/"} forceRedirectUrl={"/"} />;
+  return <SignUp forceRedirectUrl={"/"} afterSignUpUrl={"/"} />;
 }
