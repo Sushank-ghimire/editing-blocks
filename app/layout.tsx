@@ -33,7 +33,6 @@ export default function RootLayout({
         baseTheme: dark,
       }}
       afterSignOutUrl={"/sign-in"}
-      
     >
       <html lang="en" suppressHydrationWarning>
         <body
@@ -46,7 +45,6 @@ export default function RootLayout({
               speed={200}
               showSpinner={true}
             />
-
             {children}
           </ThemeProvider>
         </body>
