@@ -1,5 +1,4 @@
 "use client";
-import { Editor } from "@tiptap/react";
 import ToolbarButton from "./ToolbarButton";
 import {
   Heading1,
@@ -23,10 +22,7 @@ import {
 } from "lucide-react";
 import { Separator } from "../ui/separator";
 import FontFamilyButton from "./FontFamily";
-
-interface EditorToolbarProps {
-  editor: Editor | null;
-}
+import { EditorToolbarProps } from "@/types";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {

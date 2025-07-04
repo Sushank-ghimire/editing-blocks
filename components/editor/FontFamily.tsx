@@ -1,5 +1,4 @@
 "use client";
-
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -9,11 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Check, ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
-import { Editor } from "@tiptap/core";
-
-interface FontFamilyButtonProps {
-  editor: Editor | null;
-}
+import { FontFamilyButtonProps } from "@/types";
 
 const fontOptions = [
   { label: "Arial", value: "arial, sans-serif" },

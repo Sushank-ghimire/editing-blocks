@@ -1,18 +1,8 @@
 "use client";
-
 import { Tooltip } from "@radix-ui/react-tooltip";
 import clsx from "clsx";
-import { LucideIcon } from "lucide-react";
 import { TooltipContent, TooltipTrigger } from "../ui/tooltip";
-
-interface ToolbarButtonProps {
-  isActive?: boolean;
-  icon: LucideIcon;
-  onClick: () => void;
-  alt?: string;
-  disabled?: boolean;
-  label: string;
-}
+import { ToolbarButtonProps } from "@/types";
 
 const ToolbarButton = ({
   isActive = false,
