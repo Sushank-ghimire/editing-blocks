@@ -19,6 +19,7 @@ import {
   MessageSquareDiff,
   ListTodoIcon,
   RemoveFormatting,
+  Pilcrow,
 } from "lucide-react";
 import { Separator } from "../ui/separator";
 import FontFamilyButton from "./FontFamily";
@@ -101,28 +102,36 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
     ],
     [
       {
-        label: "Heading1",
+        label: "Heading 1",
         icon: Heading1,
         onClick: () => {
           editor.chain().focus().toggleHeading({ level: 1 }).run();
         },
-        isActive: editor.isActive("heading1"),
+        isActive: editor.isActive("heading"),
       },
       {
-        label: "Heading2",
+        label: "Heading 2",
         icon: Heading2,
         onClick: () => {
           editor.chain().focus().toggleHeading({ level: 2 }).run();
         },
-        isActive: editor.isActive("heading2"),
+        isActive: editor.isActive("heading"),
       },
       {
-        label: "Heading3",
+        label: "Heading 3",
         icon: Heading3,
         onClick: () => {
           editor.chain().focus().toggleHeading({ level: 3 }).run();
         },
-        isActive: editor.isActive("heading3"),
+        isActive: editor.isActive("heading"),
+      },
+      {
+        label: "Paragraph",
+        icon: Pilcrow,
+        onClick: () => {
+          editor.chain().focus().setParagraph().run();
+        },
+        isActive: editor.isActive("paragraph"),
       },
     ],
     [
