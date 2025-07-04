@@ -19,16 +19,12 @@ import Emoji, { gitHubEmojis } from "@tiptap/extension-emoji";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { TextStyle } from "@tiptap/extension-text-style";
 import { FontFamily } from "@tiptap/extension-font-family";
+import { Highlight } from "@tiptap/extension-highlight";
+import { Color } from "@tiptap/extension-color";
 
 const Tiptap = () => {
   const editor = useEditor({
     extensions: [
-      TextStyle,
-      FontFamily,
-      Emoji.configure({
-        emojis: gitHubEmojis,
-        enableEmoticons: true,
-      }),
       StarterKit,
       Underline,
       Subscript,
@@ -51,6 +47,18 @@ const Tiptap = () => {
         inline: true,
       }),
       Dropcursor,
+      Color.configure({
+        types: ["textStyle"],
+      }),
+      TextStyle,
+      FontFamily,
+      Emoji.configure({
+        emojis: gitHubEmojis,
+        enableEmoticons: true,
+      }),
+      Highlight.configure({
+        multicolor: true,
+      }),
     ],
     content: `
     Start Writing Your Content

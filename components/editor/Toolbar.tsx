@@ -23,6 +23,7 @@ import {
 import { Separator } from "../ui/separator";
 import FontFamilyButton from "./FontFamily";
 import { EditorToolbarProps } from "@/types";
+import TextStyle from "./TextStyle";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {
@@ -242,6 +243,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       ))}
       {/* Font Size */}
       {/* Text color */}
+      <TextStyle />
       {/* Highlight Color */}
       {/* Links */}
       {/* Images */}

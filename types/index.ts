@@ -19,3 +19,5 @@ export interface ToolbarButtonProps {
   disabled?: boolean;
   label: string;
 }
+
+export interface TextStyleProps {}
