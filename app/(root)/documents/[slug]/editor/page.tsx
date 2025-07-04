@@ -11,14 +11,20 @@ import Table from "@tiptap/extension-table";
 import TableCell from "@tiptap/extension-table-cell";
 import TableHeader from "@tiptap/extension-table-header";
 import TableRow from "@tiptap/extension-table-row";
-import { Dropcursor } from "@tiptap/extensions";
+import { Dropcursor } from "@tiptap/extension-dropcursor";
 import Underline from "@tiptap/extension-underline";
 import Mathematics from "@tiptap/extension-mathematics";
 import EditorToolbar from "@/components/editor/Toolbar";
+import Emoji, { gitHubEmojis } from "@tiptap/extension-emoji";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const Tiptap = () => {
   const editor = useEditor({
     extensions: [
+      Emoji.configure({
+        emojis: gitHubEmojis,
+        enableEmoticons: true,
+      }),
       StarterKit,
       Underline,
       Subscript,
@@ -43,9 +49,7 @@ const Tiptap = () => {
       Dropcursor,
     ],
     content: `
-      <h1>
-        This editor supports <span data-type="inline-math" data-latex="\\LaTeX"></span> math expressions. And it even supports converting old $\\sub(3*5=15)$ calculations.
-      </h1>
+    Start Writing Your Content
     `,
     editorProps: {
       attributes: {
@@ -56,18 +60,20 @@ const Tiptap = () => {
   });
 
   return (
-    <div className="w-full flex flex-col gap-2 items-center justify-center px-4 py-6">
-      <EditorToolbar editor={editor} />
-      <div className="w-full max-w-screen-lg rounded-md border border-input bg-card text-card-foreground shadow-md overflow-hidden">
-        <div className="border-b border-border px-4 py-2 bg-muted text-muted-foreground text-sm font-medium">
-          Start editing Your Document
-        </div>
+    <TooltipProvider>
+      <div className="w-full flex flex-col gap-2 items-center justify-center px-4 py-6">
+        <div className="w-full max-w-screen-lg rounded-md border border-input bg-card text-card-foreground shadow-md overflow-hidden">
+          <div className="border-b border-border px-4 py-2 bg-muted text-muted-foreground text-sm font-medium">
+            <EditorToolbar editor={editor} />
+            Start editing Your Document
+          </div>
 
-        <div className="overflow-y-auto md:w-[50%] w-[90%] max-h-[90vh] px-4 py-6">
-          <EditorContent className="w-full ml-4" editor={editor} />
+          <div className="overflow-y-auto  w-[90%] max-h-[90vh] px-4 py-6">
+            <EditorContent className="w-full ml-4" editor={editor} />
+          </div>
         </div>
       </div>
-    </div>
+    </TooltipProvider>
   );
 };
 

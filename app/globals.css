@@ -411,4 +411,8 @@
       border-radius: 0.25rem;
     }
   }
+
+  u {
+    text-decoration: underline;
+  }
 }
