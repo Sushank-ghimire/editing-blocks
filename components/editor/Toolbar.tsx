@@ -17,8 +17,11 @@ import {
   ItalicIcon,
   Underline,
   MessageSquareDiff,
+  ListTodoIcon,
+  RemoveFormatting,
 } from "lucide-react";
 import { Separator } from "../ui/separator";
+import FontFamilyButton from "./FontFamily";
 
 interface EditorToolbarProps {
   editor: Editor | null;
@@ -130,6 +133,22 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
           console.log("Comment added");
         },
       },
+      {
+        label: "List",
+        icon: ListTodoIcon,
+        onClick: () => {
+          editor.chain().focus().toggleTaskList().run();
+        },
+        isActive: editor.isActive("toggleTask"),
+      },
+      {
+        label: "Remove Formatting",
+        icon: RemoveFormatting,
+        onClick: () => {
+          editor.chain().focus().unsetAllMarks().run();
+        },
+        isActive: editor.isActive("toggleTask"),
+      },
     ],
     [
       {
@@ -156,7 +175,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
     ],
   ];
   return (
-    <section className="w-full text-lg gap-2 overflow-x-scroll mb-3 text-foreground items-center flex justify-start">
+    <section className="w-full text-base gap-2 mb-3 text-foreground items-center flex justify-start overflow-x-auto whitespace-nowrap px-2 scroll-smooth scrollbar-hide snap-x snap-mandatory">
       {/* Functionalities */}
       {sections[0].map((item) => (
         <ToolbarButton
@@ -181,6 +200,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       ))}
       <Separator orientation="vertical" className="bg-foreground h-6" />
       {/* Font Family */}
+      <FontFamilyButton editor={editor} />
       <Separator orientation="vertical" className="bg-foreground h-6" />
       {/* Headings */}
       {sections[2].map((item) => (

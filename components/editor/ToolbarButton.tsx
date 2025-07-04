@@ -39,7 +39,7 @@ const ToolbarButton = ({
           <Icon className="size-5 text-foreground font-semibold" />
         </button>
       </TooltipTrigger>
-      <TooltipContent>{label}</TooltipContent>
+      {!isActive && <TooltipContent>{label}</TooltipContent>}
     </Tooltip>
   );
 };
