@@ -30,6 +30,7 @@ import AddLinkButton from "./AddLinkButton";
 import AddImageButton from "./AddImageButton";
 import TextAlign from "@tiptap/extension-text-align";
 import TextAlignment from "./TextAlignment";
+import Lists from "./List";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {
@@ -218,8 +219,8 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       <TextAlignment editor={editor} />
 
       {/* Lists */}
+      <Lists editor={editor} />
 
-      
       {/* Font Size */}
       {/* Text color */}
       <TextStyle editor={editor} />

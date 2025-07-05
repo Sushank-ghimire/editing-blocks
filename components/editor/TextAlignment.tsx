@@ -1,18 +1,18 @@
 "use client";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-} from "@radix-ui/react-dropdown-menu";
-import {
   AlignCenter,
-  AlignCenterHorizontal,
   AlignJustify,
   AlignLeft,
   AlignRight,
+  ListFilter,
 } from "lucide-react";
 import React from "react";
-import { DropdownMenuItem } from "../ui/dropdown-menu";
+import {
+  DropdownMenuItem,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
 import { Editor } from "@tiptap/core";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { Button } from "../ui/button";
@@ -57,15 +57,19 @@ const TextAlignment = ({ editor }: { editor: Editor }) => {
         <TooltipTrigger asChild>
           <DropdownMenuTrigger asChild>
             <Button className="hover:bg-accent text-foreground bg-transparent flex items-center justify-center">
-              <AlignCenterHorizontal />
+              <ListFilter />
               <TooltipContent>Text Alignment</TooltipContent>
             </Button>
           </DropdownMenuTrigger>
         </TooltipTrigger>
-        <DropdownMenuContent>
+        <DropdownMenuContent className="w-44">
           {alignMents.map((item) => (
-            <DropdownMenuItem className="w-full text-sm" onClick={item.onClick} key={item.label}>
-              <Button className="flex w-full text-foreground justify-between items-center hover:bg-accent bg-transparent">
+            <DropdownMenuItem
+              className="w-full"
+              onClick={item.onClick}
+              key={item.label}
+            >
+              <Button className="flex w-full text-foreground justify-between items-center hover:bg-accent bg-transparent text-xs">
                 <item.icon />
                 <span>{item.label}</span>
               </Button>
