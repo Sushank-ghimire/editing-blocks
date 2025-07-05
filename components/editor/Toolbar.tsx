@@ -28,6 +28,8 @@ import { memo } from "react";
 import HighLightColor from "./HighLightColor";
 import AddLinkButton from "./AddLinkButton";
 import AddImageButton from "./AddImageButton";
+import TextAlign from "@tiptap/extension-text-align";
+import TextAlignment from "./TextAlignment";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {
@@ -160,29 +162,6 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
         isActive: editor.isActive("toggleTask"),
       },
     ],
-    [
-      {
-        label: "AlignLeft",
-        icon: AlignLeft,
-        onClick: () => {
-          console.log("Left");
-        },
-      },
-      {
-        label: "AlignCenter",
-        icon: AlignCenter,
-        onClick: () => {
-          console.log("Center");
-        },
-      },
-      {
-        label: "AlignRight",
-        icon: AlignRight,
-        onClick: () => {
-          console.log("Right");
-        },
-      },
-    ],
   ];
   return (
     <section className="w-full text-base gap-2 mb-3 text-foreground items-center flex justify-start overflow-x-auto whitespace-nowrap px-2 scroll-smooth scrollbar-hide snap-x snap-mandatory">
@@ -236,15 +215,11 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
 
       <Separator orientation="vertical" className="bg-foreground h-6 w-2" />
       {/* Text Alignment */}
-      {sections[4].map((item) => (
-        <ToolbarButton
-          label={item.label}
-          icon={item.icon}
-          key={item.label}
-          isActive={item.isActive}
-          onClick={item.onClick}
-        />
-      ))}
+      <TextAlignment editor={editor} />
+
+      {/* Lists */}
+
+      
       {/* Font Size */}
       {/* Text color */}
       <TextStyle editor={editor} />
