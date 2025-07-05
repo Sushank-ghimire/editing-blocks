@@ -3,6 +3,7 @@ import { Tooltip } from "@radix-ui/react-tooltip";
 import clsx from "clsx";
 import { TooltipContent, TooltipTrigger } from "../ui/tooltip";
 import { ToolbarButtonProps } from "@/types";
+import { memo } from "react";
 
 const ToolbarButton = ({
   isActive = false,
@@ -34,4 +35,4 @@ const ToolbarButton = ({
   );
 };
 
-export default ToolbarButton;
+export default memo(ToolbarButton);

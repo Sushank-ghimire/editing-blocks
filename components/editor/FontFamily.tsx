@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Check, ChevronDown } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, memo } from "react";
 import { FontFamilyButtonProps } from "@/types";
 
 const fontOptions = [
@@ -70,4 +70,4 @@ const FontFamilyButton = ({ editor }: FontFamilyButtonProps) => {
   );
 };
 
-export default FontFamilyButton;
+export default memo(FontFamilyButton);

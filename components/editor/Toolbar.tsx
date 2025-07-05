@@ -24,6 +24,7 @@ import { Separator } from "../ui/separator";
 import FontFamilyButton from "./FontFamily";
 import { EditorToolbarProps } from "@/types";
 import TextStyle from "./TextStyle";
+import { memo } from "react";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {
@@ -243,7 +244,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       ))}
       {/* Font Size */}
       {/* Text color */}
-      <TextStyle />
+      <TextStyle editor={editor} />
       {/* Highlight Color */}
       {/* Links */}
       {/* Images */}
@@ -251,4 +252,4 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   );
 };
 
-export default EditorToolbar;
+export default memo(EditorToolbar);

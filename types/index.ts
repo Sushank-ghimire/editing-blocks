@@ -20,4 +20,6 @@ export interface ToolbarButtonProps {
   label: string;
 }
 
-export interface TextStyleProps {}
+export interface TextStyleProps {
+  editor: EditorType;
+}
