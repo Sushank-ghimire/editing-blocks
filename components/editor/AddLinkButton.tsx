@@ -13,10 +13,11 @@ import { DropdownMenuContent } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
 
 const AddLinkButton = ({ editor }: AddLinkButtonProps) => {
+  const [value, setValue] = useState(editor?.getAttributes("link").href || "");
+
   if (!editor) {
     return null;
   }
-  const [value, setValue] = useState(editor.getAttributes("link").href || "");
 
   const handleLinkChange = (link: string) => {
     editor
@@ -38,8 +39,8 @@ const AddLinkButton = ({ editor }: AddLinkButtonProps) => {
     >
       <Tooltip>
         <DropdownMenuTrigger asChild>
-          <TooltipTrigger>
-            <Button className="bg-accent w-fit p-1.5">
+          <TooltipTrigger asChild>
+            <Button className="hover:bg-accent bg-transparent w-fit p-1.5">
               <Link2 className="size-5 text-foreground" />
               <TooltipContent>Add Link</TooltipContent>
             </Button>

@@ -13,14 +13,12 @@ import { HighlighterIcon } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const HighLightColor = ({ editor }: HighLightColorProps) => {
+  const [currentColor, setCurrentColor] = useState(
+    editor?.getAttributes("highlight").color
+  );
   if (!editor) {
     return null;
   }
-
-  const [currentColor, setCurrentColor] = useState(
-    editor.getAttributes("highlight").color
-  );
-
   const handleOnChange = (color: ColorResult) => {
     setCurrentColor(color.hex);
     editor.chain().focus().setHighlight({ color: color.hex }).run();
@@ -35,7 +33,7 @@ const HighLightColor = ({ editor }: HighLightColorProps) => {
               style={{
                 backgroundColor: currentColor,
               }}
-              className={`text-foreground bg-accent w-fit flex items-center ${
+              className={`text-foreground bg-transparent hover:bg-accent w-fit flex items-center ${
                 editor.isActive("highlight", { color: currentColor })
                   ? "bg-accent"
                   : null

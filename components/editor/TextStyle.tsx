@@ -13,12 +13,10 @@ import { CloudMoonRainIcon } from "lucide-react";
 import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const TextStyle = ({ editor }: TextStyleProps) => {
+  const [currentColor, setCurrentColor] = useState("");
   if (!editor) {
     return null;
   }
-
-  const [currentColor, setCurrentColor] = useState("");
-
   const handleOnChange = (color: ColorResult) => {
     setCurrentColor(color.hex);
     editor.chain().focus().setColor(color.hex).run();
@@ -33,7 +31,7 @@ const TextStyle = ({ editor }: TextStyleProps) => {
               style={{
                 backgroundColor: currentColor,
               }}
-              className="bg-accent text-foreground"
+              className="hover:bg-accent bg-transparent text-foreground"
             >
               <CloudMoonRainIcon />
               <TooltipContent>Colors</TooltipContent>

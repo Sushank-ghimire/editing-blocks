@@ -13,12 +13,15 @@ import { DropdownMenuContent } from "../ui/dropdown-menu";
 import { Input } from "../ui/input";
 
 const AddImageButton = ({ editor }: AddImageButtonProps) => {
+  const [image, setImage] = useState(editor?.getAttributes("link").href || "");
+
   if (!editor) {
     return null;
   }
-  const [image, setImage] = useState(editor.getAttributes("link").href || "");
 
   const handleLinkChange = (imageLink: string) => {
+    console.log(imageLink);
+
     setImage("");
   };
 
@@ -26,8 +29,8 @@ const AddImageButton = ({ editor }: AddImageButtonProps) => {
     <DropdownMenu>
       <Tooltip>
         <DropdownMenuTrigger asChild>
-          <TooltipTrigger>
-            <Button className="bg-accent w-fit p-1.5">
+          <TooltipTrigger asChild>
+            <Button className="hover:bg-accent bg-transparent w-fit p-1.5">
               <Image className="size-5 text-foreground" />
               <TooltipContent>Add Image</TooltipContent>
             </Button>
