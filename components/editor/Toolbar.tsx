@@ -26,6 +26,7 @@ import { EditorToolbarProps } from "@/types";
 import TextStyle from "./TextStyle";
 import { memo } from "react";
 import HighLightColor from "./HighLightColor";
+import AddLinkButton from "./AddLinkButton";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {
@@ -250,6 +251,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       {/* Highlight Color */}
       <HighLightColor editor={editor} />
       {/* Links */}
+      <AddLinkButton editor={editor} />
       {/* Images */}
     </section>
   );

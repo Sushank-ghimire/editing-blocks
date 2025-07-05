@@ -438,6 +438,7 @@
 
     &:hover {
       color: var(--color-blue-500);
+      text-decoration: underline;
     }
   }
 }
