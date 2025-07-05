@@ -23,3 +23,5 @@ export interface ToolbarButtonProps {
 export interface TextStyleProps {
   editor: EditorType;
 }
+
+export type HighLightColorProps = TextStyleProps;

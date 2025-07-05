@@ -25,6 +25,7 @@ import FontFamilyButton from "./FontFamily";
 import { EditorToolbarProps } from "@/types";
 import TextStyle from "./TextStyle";
 import { memo } from "react";
+import HighLightColor from "./HighLightColor";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {
@@ -245,7 +246,9 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       {/* Font Size */}
       {/* Text color */}
       <TextStyle editor={editor} />
+
       {/* Highlight Color */}
+      <HighLightColor editor={editor} />
       {/* Links */}
       {/* Images */}
     </section>

@@ -1,6 +1,6 @@
 "use client";
 
-import { TextStyleProps } from "@/types";
+import { HighLightColorProps } from "@/types";
 import { SketchPicker, type ColorResult } from "react-color";
 import {
   DropdownMenuContent,
@@ -10,16 +10,18 @@ import {
 import { Button } from "../ui/button";
 import { memo, useState } from "react";
 
-const TextStyle = ({ editor }: TextStyleProps) => {
+const HighLightColor = ({ editor }: HighLightColorProps) => {
   if (!editor) {
     return null;
   }
 
-  const [currentColor, setCurrentColor] = useState("");
+  const [currentColor, setCurrentColor] = useState(
+    editor.getAttributes("highlight").color
+  );
 
   const handleOnChange = (color: ColorResult) => {
     setCurrentColor(color.hex);
-    editor.chain().focus().setColor(color.hex).run();
+    editor.chain().focus().setHighlight({ color: color.hex }).run();
   };
 
   return (
@@ -29,9 +31,13 @@ const TextStyle = ({ editor }: TextStyleProps) => {
           style={{
             backgroundColor: currentColor,
           }}
-          className="bg-accent text-foreground p-1.5 flex justify-center items-center h-fit"
+          className={`text-foreground p-1.5 flex justify-center items-center h-fit ${
+            editor.isActive("highlight", { color: currentColor })
+              ? "bg-accent"
+              : null
+          }`}
         >
-          <span>C</span>
+          <span>H</span>
           <div
             style={{ backgroundColor: currentColor }}
             className="w-full"
@@ -45,4 +51,4 @@ const TextStyle = ({ editor }: TextStyleProps) => {
   );
 };
 
-export default memo(TextStyle);
+export default memo(HighLightColor);

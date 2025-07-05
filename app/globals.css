@@ -415,4 +415,29 @@
   u {
     text-decoration: underline;
   }
+
+  mark {
+    border-radius: 0.4rem;
+    box-decoration-break: clone;
+    padding: 0.1rem 0.3rem;
+  }
+
+  /* Code and preformatted text styles */
+  code {
+    background-color: var(--purple-light);
+    border-radius: 0.4rem;
+    color: var(--black);
+    font-size: 0.85rem;
+    padding: 0.25em 0.3em;
+  }
+
+  /* Link styles */
+  a {
+    color: var(--purple-light);
+    cursor: pointer;
+
+    &:hover {
+      color: var(--color-blue-500);
+    }
+  }
 }
