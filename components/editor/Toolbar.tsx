@@ -27,6 +27,7 @@ import TextStyle from "./TextStyle";
 import { memo } from "react";
 import HighLightColor from "./HighLightColor";
 import AddLinkButton from "./AddLinkButton";
+import AddImageButton from "./AddImageButton";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {
@@ -253,6 +254,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       {/* Links */}
       <AddLinkButton editor={editor} />
       {/* Images */}
+      <AddImageButton editor={editor} />
     </section>
   );
 };

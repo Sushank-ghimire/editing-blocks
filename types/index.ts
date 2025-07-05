@@ -27,3 +27,5 @@ export interface TextStyleProps {
 export type HighLightColorProps = TextStyleProps;
 
 export type AddLinkButtonProps = TextStyleProps;
+
+export type AddImageButtonProps = TextStyleProps;
