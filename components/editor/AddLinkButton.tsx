@@ -29,14 +29,14 @@ const AddLinkButton = ({ editor }: AddLinkButtonProps) => {
   };
 
   return (
-    <Tooltip
+    <DropdownMenu
       onOpenChange={(open) => {
         if (open) {
           setValue(editor.getAttributes("link").href);
         }
       }}
     >
-      <DropdownMenu>
+      <Tooltip>
         <DropdownMenuTrigger asChild>
           <TooltipTrigger>
             <Button className="bg-accent w-fit p-1.5">
@@ -60,8 +60,8 @@ const AddLinkButton = ({ editor }: AddLinkButtonProps) => {
             Apply
           </Button>
         </DropdownMenuContent>
-      </DropdownMenu>
-    </Tooltip>
+      </Tooltip>
+    </DropdownMenu>
   );
 };
 
