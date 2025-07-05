@@ -1,12 +1,10 @@
 "use client";
 import ToolbarButton from "./ToolbarButton";
+import { memo } from "react";
 import {
   Heading1,
   Heading2,
   Heading3,
-  AlignCenter,
-  AlignLeft,
-  AlignRight,
   Bold,
   LucideIcon,
   Undo2Icon,
@@ -21,16 +19,16 @@ import {
   Pilcrow,
 } from "lucide-react";
 import { Separator } from "../ui/separator";
-import FontFamilyButton from "./FontFamily";
+import {
+  AddImageButton,
+  AddLinkButton,
+  FontFamilyButton,
+  TextAlignment,
+  TextStyle,
+  HighLightColor,
+  Lists,
+} from "./utilities/index";
 import { EditorToolbarProps } from "@/types";
-import TextStyle from "./TextStyle";
-import { memo } from "react";
-import HighLightColor from "./HighLightColor";
-import AddLinkButton from "./AddLinkButton";
-import AddImageButton from "./AddImageButton";
-import TextAlign from "@tiptap/extension-text-align";
-import TextAlignment from "./TextAlignment";
-import Lists from "./List";
 
 const EditorToolbar = ({ editor }: EditorToolbarProps) => {
   if (!editor) {

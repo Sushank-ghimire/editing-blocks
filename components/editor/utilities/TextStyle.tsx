@@ -7,10 +7,14 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Button } from "../ui/button";
+import { Button } from "@/components/ui/button";
 import { memo, useState } from "react";
 import { CloudMoonRainIcon } from "lucide-react";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const TextStyle = ({ editor }: TextStyleProps) => {
   const [currentColor, setCurrentColor] = useState("");

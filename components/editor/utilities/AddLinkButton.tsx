@@ -7,10 +7,10 @@ import {
 } from "@radix-ui/react-dropdown-menu";
 import { Link2 } from "lucide-react";
 import { memo, useState } from "react";
-import { Button } from "../ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
-import { DropdownMenuContent } from "../ui/dropdown-menu";
-import { Input } from "../ui/input";
+import { Button } from "@/components/ui/button";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { DropdownMenuContent } from "@/components/ui/dropdown-menu";
+import { Input } from "@/components/ui/input";
 
 const AddLinkButton = ({ editor }: AddLinkButtonProps) => {
   const [value, setValue] = useState(editor?.getAttributes("link").href || "");
