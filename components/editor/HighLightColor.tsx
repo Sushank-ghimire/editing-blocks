@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
 import { memo, useState } from "react";
+import { HighlighterIcon } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const HighLightColor = ({ editor }: HighLightColorProps) => {
   if (!editor) {
@@ -25,29 +27,30 @@ const HighLightColor = ({ editor }: HighLightColorProps) => {
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          style={{
-            backgroundColor: currentColor,
-          }}
-          className={`text-foreground p-1.5 flex justify-center items-center h-fit ${
-            editor.isActive("highlight", { color: currentColor })
-              ? "bg-accent"
-              : null
-          }`}
-        >
-          <span>H</span>
-          <div
-            style={{ backgroundColor: currentColor }}
-            className="w-full"
-          ></div>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <SketchPicker onChange={handleOnChange} color={currentColor} />
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Tooltip>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <TooltipTrigger asChild>
+            <Button
+              style={{
+                backgroundColor: currentColor,
+              }}
+              className={`text-foreground bg-accent w-fit flex items-center ${
+                editor.isActive("highlight", { color: currentColor })
+                  ? "bg-accent"
+                  : null
+              }`}
+            >
+              <HighlighterIcon />
+              <TooltipContent>Highlight</TooltipContent>
+            </Button>
+          </TooltipTrigger>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <SketchPicker onChange={handleOnChange} color={currentColor} />
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </Tooltip>
   );
 };
 

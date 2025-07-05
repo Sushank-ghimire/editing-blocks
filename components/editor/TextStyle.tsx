@@ -9,6 +9,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "../ui/button";
 import { memo, useState } from "react";
+import { CloudMoonRainIcon } from "lucide-react";
+import { Tooltip, TooltipContent, TooltipTrigger } from "../ui/tooltip";
 
 const TextStyle = ({ editor }: TextStyleProps) => {
   if (!editor) {
@@ -23,25 +25,26 @@ const TextStyle = ({ editor }: TextStyleProps) => {
   };
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button
-          style={{
-            backgroundColor: currentColor,
-          }}
-          className="bg-accent text-foreground p-1.5 flex justify-center items-center h-fit"
-        >
-          <span>C</span>
-          <div
-            style={{ backgroundColor: currentColor }}
-            className="w-full"
-          ></div>
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent>
-        <SketchPicker onChange={handleOnChange} color={currentColor} />
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <Tooltip>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <TooltipTrigger asChild>
+            <Button
+              style={{
+                backgroundColor: currentColor,
+              }}
+              className="bg-accent text-foreground"
+            >
+              <CloudMoonRainIcon />
+              <TooltipContent>Colors</TooltipContent>
+            </Button>
+          </TooltipTrigger>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent>
+          <SketchPicker onChange={handleOnChange} color={currentColor} />
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </Tooltip>
   );
 };
 
