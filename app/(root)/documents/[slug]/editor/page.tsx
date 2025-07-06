@@ -24,6 +24,7 @@ import { Color } from "@tiptap/extension-color";
 import { Link } from "@tiptap/extension-link";
 import { TextAlign } from "@tiptap/extension-text-align";
 import { CustomFontSizeExtension } from "@/extensions/font-size";
+import { CustomLineHeightExtension } from "@/extensions/line-height";
 
 const Tiptap = () => {
   const editor = useEditor({
@@ -72,6 +73,7 @@ const Tiptap = () => {
         types: ["heading", "paragraph"],
       }),
       CustomFontSizeExtension,
+      CustomLineHeightExtension,
     ],
     content: `
     Start Writing Your Content

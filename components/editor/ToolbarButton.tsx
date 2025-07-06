@@ -15,7 +15,7 @@ const ToolbarButton = ({
 }: ToolbarButtonProps) => {
   return (
     <Tooltip>
-      <TooltipTrigger asChild>
+      <TooltipTrigger className="px-1" asChild>
         <button
           onClick={onClick}
           disabled={disabled}

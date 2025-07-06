@@ -28,6 +28,7 @@ import {
   HighLightColor,
   Lists,
   FontSizeButton,
+  LineHeightButton,
 } from "./utilities/index";
 import { EditorToolbarProps } from "@/types";
 
@@ -225,6 +226,8 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       {/* Text color */}
       <TextStyle editor={editor} />
 
+      {/* Line Height */}
+      <LineHeightButton editor={editor} />
       {/* Highlight Color */}
       <HighLightColor editor={editor} />
       {/* Links */}
