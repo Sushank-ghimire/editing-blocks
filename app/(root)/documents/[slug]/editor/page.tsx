@@ -88,15 +88,25 @@ const Tiptap = () => {
 
   return (
     <TooltipProvider>
-      <div className="w-full flex flex-col gap-2 items-center justify-center px-4 py-6">
-        <div className="w-full max-w-screen-lg rounded-md border border-input bg-card text-card-foreground shadow-md overflow-hidden">
+      <div className="w-full flex flex-col items-center px-4 py-6 gap-4">
+        {/* Sticky, Scrollable Toolbar */}
+        <div className="w-full max-w-5xl overflow-x-auto scrollbar-hide sticky top-0 z-20 bg-background shadow-sm rounded-md border border-input flex justify-center items-center p-3">
+          <EditorToolbar editor={editor} />
+        </div>
+
+        {/* Editor Container */}
+        <div className="w-full max-w-5xl rounded-md border border-input bg-card text-card-foreground shadow-md flex flex-col">
+          {/* Header */}
           <div className="border-b border-border px-4 py-2 bg-muted text-muted-foreground text-sm font-medium">
-            <EditorToolbar editor={editor} />
-            Start editing Your Document
+            Start editing your document
           </div>
 
-          <div className="overflow-y-auto  w-[90%] max-h-[90vh] px-4 py-6">
-            <EditorContent className="w-full ml-4" editor={editor} />
+          {/* Editor Scrollable Content */}
+          <div className="px-4 py-6 overflow-y-auto min-h-[60vh] min-w-full max-h-[80vh]">
+            <EditorContent
+              className="w-full break-words prose max-w-none"
+              editor={editor}
+            />
           </div>
         </div>
       </div>

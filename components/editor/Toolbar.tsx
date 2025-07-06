@@ -165,7 +165,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
     ],
   ];
   return (
-    <section className="w-full text-base gap-2 mb-3 text-foreground items-center flex justify-start overflow-x-auto whitespace-nowrap px-2 scroll-smooth scrollbar-hide snap-x snap-mandatory">
+    <section className="w-container mx-auto text-base gap-2 mb-3 text-foreground items-center flex justify-start overflow-x-auto whitespace-nowrap px-2  scroll-smooth scrollbar-hide snap-x snap-mandatory">
       {/* Functionalities */}
       {sections[0].map((item) => (
         <ToolbarButton
