@@ -7,3 +7,4 @@ export { default as TextAlignment } from "./TextAlignment";
 export { default as TextStyle } from "./TextStyle";
 export { default as FontSizeButton } from "./FontsizeButton";
 export { default as LineHeightButton } from "./SetLineHeightButton";
+export { default as Ruler } from "./Ruler";

@@ -25,6 +25,7 @@ import { Link } from "@tiptap/extension-link";
 import { TextAlign } from "@tiptap/extension-text-align";
 import { CustomFontSizeExtension } from "@/extensions/font-size";
 import { CustomLineHeightExtension } from "@/extensions/line-height";
+import { Ruler } from "@/components/editor/utilities";
 
 const Tiptap = () => {
   const editor = useEditor({
@@ -92,6 +93,11 @@ const Tiptap = () => {
         {/* Sticky, Scrollable Toolbar */}
         <div className="w-full max-w-5xl overflow-x-auto scrollbar-hide sticky top-0 z-20 bg-background shadow-sm rounded-md border border-input flex justify-center items-center p-3">
           <EditorToolbar editor={editor} />
+        </div>
+
+        {/* Ruler Component */}
+        <div className="w-full max-w-5xl px-4">
+          <Ruler /> {/* Horizontal Ruler aligned with editor */}
         </div>
 
         {/* Editor Container */}
