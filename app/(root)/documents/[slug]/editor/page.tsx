@@ -92,17 +92,17 @@ const Tiptap = () => {
     <TooltipProvider>
       <div className="w-full flex flex-col items-center px-4 py-6 gap-4">
         {/* Sticky, Scrollable Toolbar */}
-        <div className="w-full max-w-5xl overflow-x-auto scrollbar-hide sticky top-0 z-20 bg-background shadow-sm rounded-md border border-input flex justify-center items-center p-3">
+        <div className="w-full max-w-5xl overflow-x-auto scrollbar-hide sticky top-0 z-20 bg-background shadow-sm rounded-md border border-input print:hidden flex justify-center items-center p-3">
           <EditorToolbar editor={editor} />
         </div>
 
         {/* Ruler Component */}
-        <div className="w-full max-w-5xl px-4">
+        <div className="w-full print:hidden max-w-5xl px-4">
           <Ruler /> {/* Horizontal Ruler aligned with editor */}
         </div>
 
         {/* Editor Container */}
-        <div className="w-full max-w-5xl rounded-md border border-input bg-card text-card-foreground shadow-md flex flex-col">
+        <div className="w-full max-w-5xl rounded-md border border-input bg-card text-card-foreground shadow-md flex flex-col print:hidden">
           {/* Header */}
           <div className="border-b border-border px-4 py-2 bg-muted text-muted-foreground text-sm font-medium">
             Start editing your document
