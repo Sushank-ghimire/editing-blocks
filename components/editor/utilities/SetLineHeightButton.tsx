@@ -22,12 +22,10 @@ const LINE_HEIGHTS = [
 ];
 
 const LineHeightDropdown = ({ editor }: { editor: Editor | null }) => {
-  if (!editor) return null;
-
   const currentValue =
-    editor.getAttributes("textStyle")?.lineHeight?.replace("px", "") || "1.5";
-
+    editor?.getAttributes("textStyle")?.lineHeight?.replace("px", "") || "1.5";
   const [selected, setSelected] = useState(currentValue);
+  if (!editor) return null;
 
   const handleSelect = (value: string) => {
     editor.chain().focus().setLineHeight(value).run();

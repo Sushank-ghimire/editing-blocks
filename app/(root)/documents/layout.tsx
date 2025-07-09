@@ -1,4 +1,4 @@
-import { DocumentsNavbar } from "@/components/index";
+// import { DocumentsNavbar } from "@/components/index";
 
 interface IDocumentLayout {
   children: React.ReactNode;

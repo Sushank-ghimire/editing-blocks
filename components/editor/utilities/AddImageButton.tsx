@@ -5,10 +5,14 @@ import {
   DropdownMenu,
   DropdownMenuTrigger,
 } from "@radix-ui/react-dropdown-menu";
-import { Image, UploadIcon } from "lucide-react";
+import { Image as ImageIcon, UploadIcon } from "lucide-react";
 import { memo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
 import {
@@ -51,7 +55,7 @@ const AddImageButton = ({ editor }: AddImageButtonProps) => {
         <DropdownMenuTrigger asChild>
           <TooltipTrigger asChild>
             <Button className="hover:bg-accent bg-transparent w-fit p-1.5">
-              <Image className="size-5 text-foreground" />
+              <ImageIcon className="size-5 text-foreground" />
               <TooltipContent>Add Image</TooltipContent>
             </Button>
           </TooltipTrigger>
