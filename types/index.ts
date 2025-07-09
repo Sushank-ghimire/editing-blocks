@@ -29,3 +29,11 @@ export type HighLightColorProps = TextStyleProps;
 export type AddLinkButtonProps = TextStyleProps;
 
 export type AddImageButtonProps = TextStyleProps;
+
+export interface MarkerProps {
+  position: number;
+  isLeft: boolean;
+  isDragging: boolean;
+  onMouseDown: () => void;
+  onDoubleClisk: () => void;
+}

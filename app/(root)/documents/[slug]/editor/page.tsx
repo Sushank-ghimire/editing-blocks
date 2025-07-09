@@ -88,6 +88,8 @@ const Tiptap = () => {
     },
   });
 
+  if (!editor) return null;
+
   return (
     <TooltipProvider>
       <div className="w-full flex flex-col items-center px-4 py-6 gap-4">
@@ -98,7 +100,7 @@ const Tiptap = () => {
 
         {/* Ruler Component */}
         <div className="w-full print:hidden max-w-5xl px-4">
-          <Ruler /> {/* Horizontal Ruler aligned with editor */}
+          <Ruler editor={editor} /> {/* Horizontal Ruler aligned with editor */}
         </div>
 
         {/* Editor Container */}
