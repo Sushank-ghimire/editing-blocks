@@ -29,6 +29,7 @@ import { Ruler } from "@/components/editor/utilities";
 
 const Tiptap = () => {
   const editor = useEditor({
+    immediatelyRender: false,
     extensions: [
       StarterKit,
       Underline,
