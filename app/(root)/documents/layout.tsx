@@ -1,4 +1,4 @@
-// import { DocumentsNavbar } from "@/components/index";
+import DocumentsNavbar from "@/components/DocumentsNavbar";
 
 interface IDocumentLayout {
   children: React.ReactNode;
@@ -7,7 +7,7 @@ interface IDocumentLayout {
 const DocumentsLayout = ({ children }: IDocumentLayout) => {
   return (
     <main className="min-h-screen w-screen overflow-x-hidden">
-      {/* <DocumentsNavbar /> */}
+      <DocumentsNavbar />
       {children}
     </main>
   );
