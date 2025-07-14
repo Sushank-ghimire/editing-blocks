@@ -156,22 +156,22 @@ const DocumentsNavbar = () => {
                     Text
                   </MenubarSubTrigger>
                   <MenubarSubContent>
-                    <MenubarItem className="flex gap-2">
+                    <MenubarItem className="flex items-center justify-between">
                       Bold
                       <BoldIcon />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex gap-2">
+                    <MenubarItem className="flex items-center justify-between">
                       Italic
                       <ItalicIcon />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex gap-2">
+                    <MenubarItem className="flex items-center justify-between">
                       Underline
                       <UnderlineIcon />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex gap-2">
+                    <MenubarItem className="flex items-center justify-between">
                       Strikethrough
                       <StrikethroughIcon />
                     </MenubarItem>
