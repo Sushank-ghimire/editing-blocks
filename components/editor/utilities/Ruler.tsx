@@ -1,13 +1,14 @@
 "use client";
+import useEditorStore from "@/store/useEditor";
 import { MarkerProps } from "@/types";
-import { Editor } from "@tiptap/core";
 import { Triangle } from "lucide-react";
 import { useTheme } from "next-themes";
 import React, { useRef, useState } from "react";
 
 const markers = Array.from({ length: 102 }, (_, i) => i);
 
-const Ruler = ({ editor }: { editor: Editor }) => {
+const Ruler = () => {
+  const { editor } = useEditorStore();
   const [leftMargin, setLeftMargin] = useState(0);
   const [rightMargin, setRightMargin] = useState(0);
 

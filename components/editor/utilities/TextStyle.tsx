@@ -1,6 +1,5 @@
 "use client";
 
-import { TextStyleProps } from "@/types";
 import { SketchPicker, type ColorResult } from "react-color";
 import {
   DropdownMenuContent,
@@ -15,8 +14,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import useEditorStore from "@/store/useEditor";
 
-const TextStyle = ({ editor }: TextStyleProps) => {
+const TextStyle = () => {
+  const { editor } = useEditorStore();
   const [currentColor, setCurrentColor] = useState("");
   if (!editor) {
     return null;

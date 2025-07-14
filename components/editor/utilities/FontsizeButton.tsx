@@ -2,12 +2,13 @@
 
 import { Plus, Minus } from "lucide-react";
 import React, { memo, useState, useRef } from "react";
-import { Editor } from "@tiptap/core";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import ToolbarButton from "../ToolbarButton";
+import useEditorStore from "@/store/useEditor";
 
-const FontsizeButton = ({ editor }: { editor: Editor }) => {
+const FontsizeButton = () => {
+  const { editor } = useEditorStore();
   const currentFontSize =
     editor?.getAttributes("textStyle").fontSize?.replace("px", "") || "16";
 

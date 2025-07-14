@@ -8,7 +8,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Check, ChevronDown } from "lucide-react";
 import { useState, useEffect, memo } from "react";
-import { FontFamilyButtonProps } from "@/types";
+import useEditorStore from "@/store/useEditor";
 
 const fontOptions = [
   { label: "Arial", value: "arial, sans-serif" },
@@ -18,7 +18,8 @@ const fontOptions = [
   { label: "Verdana", value: "Verdana, sans-serif" },
 ];
 
-const FontFamilyButton = ({ editor }: FontFamilyButtonProps) => {
+const FontFamilyButton = () => {
+  const { editor } = useEditorStore();
   const [selectedFont, setSelectedFont] = useState(fontOptions[0]);
 
   useEffect(() => {

@@ -8,8 +8,8 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { ChevronDown } from "lucide-react";
-import { Editor } from "@tiptap/core";
 import { useState } from "react";
+import useEditorStore from "@/store/useEditor";
 
 const LINE_HEIGHTS = [
   { label: "1", value: "1" },
@@ -21,7 +21,8 @@ const LINE_HEIGHTS = [
   { label: "3", value: "3" },
 ];
 
-const LineHeightDropdown = ({ editor }: { editor: Editor | null }) => {
+const LineHeightDropdown = () => {
+  const { editor } = useEditorStore();
   const currentValue =
     editor?.getAttributes("textStyle")?.lineHeight?.replace("px", "") || "1.5";
   const [selected, setSelected] = useState(currentValue);

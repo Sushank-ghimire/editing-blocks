@@ -13,11 +13,16 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Editor } from "@tiptap/core";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
+import useEditorStore from "@/store/useEditor";
 
-const TextAlignment = ({ editor }: { editor: Editor }) => {
+const TextAlignment = () => {
+  const { editor } = useEditorStore();
   if (!editor) {
     return null;
   }

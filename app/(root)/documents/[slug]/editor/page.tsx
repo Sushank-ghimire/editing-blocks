@@ -26,8 +26,12 @@ import { TextAlign } from "@tiptap/extension-text-align";
 import { CustomFontSizeExtension } from "@/extensions/font-size";
 import { CustomLineHeightExtension } from "@/extensions/line-height";
 import { Ruler } from "@/components/editor/utilities";
+import useEditorStore from "@/store/useEditor";
+import { useEffect } from "react";
 
 const Tiptap = () => {
+  const { initializeEditor } = useEditorStore();
+
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
@@ -88,6 +92,12 @@ const Tiptap = () => {
     },
   });
 
+  useEffect(() => {
+    if (editor) {
+      initializeEditor(editor);
+    }
+  }, [editor, initializeEditor]);
+
   if (!editor) return null;
 
   return (
@@ -95,12 +105,12 @@ const Tiptap = () => {
       <div className="w-full flex flex-col items-center px-4 py-6 gap-4">
         {/* Sticky, Scrollable Toolbar */}
         <div className="w-full max-w-5xl overflow-x-auto scrollbar-hide sticky top-0 z-20 bg-background shadow-sm rounded-md border border-input print:hidden flex justify-center items-center p-3">
-          <EditorToolbar editor={editor} />
+          <EditorToolbar />
         </div>
 
         {/* Ruler Component */}
         <div className="w-full print:hidden max-w-5xl px-4">
-          <Ruler editor={editor} /> {/* Horizontal Ruler aligned with editor */}
+          <Ruler /> {/* Horizontal Ruler aligned with editor */}
         </div>
 
         {/* Editor Container */}

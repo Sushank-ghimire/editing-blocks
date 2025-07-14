@@ -1,6 +1,5 @@
 "use client";
 
-import { AddLinkButtonProps } from "@/types";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -8,11 +7,17 @@ import {
 import { Link2 } from "lucide-react";
 import { memo, useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { DropdownMenuContent } from "@/components/ui/dropdown-menu";
 import { Input } from "@/components/ui/input";
+import useEditorStore from "@/store/useEditor";
 
-const AddLinkButton = ({ editor }: AddLinkButtonProps) => {
+const AddLinkButton = () => {
+  const { editor } = useEditorStore();
   const [value, setValue] = useState(editor?.getAttributes("link").href || "");
 
   if (!editor) {

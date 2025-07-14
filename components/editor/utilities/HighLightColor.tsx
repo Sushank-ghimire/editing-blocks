@@ -1,6 +1,5 @@
 "use client";
 
-import { HighLightColorProps } from "@/types";
 import { SketchPicker, type ColorResult } from "react-color";
 import {
   DropdownMenuContent,
@@ -15,8 +14,10 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import useEditorStore from "@/store/useEditor";
 
-const HighLightColor = ({ editor }: HighLightColorProps) => {
+const HighLightColor = () => {
+  const { editor } = useEditorStore();
   const [currentColor, setCurrentColor] = useState(
     editor?.getAttributes("highlight").color
   );

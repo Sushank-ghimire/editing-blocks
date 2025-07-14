@@ -7,12 +7,17 @@ import {
   DropdownMenuContent,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Editor } from "@tiptap/core";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 import { Button } from "@/components/ui/button";
 import clsx from "clsx";
+import useEditorStore from "@/store/useEditor";
 
-const Lists = ({ editor }: { editor: Editor }) => {
+const Lists = () => {
+  const { editor } = useEditorStore();
   if (!editor) {
     return null;
   }

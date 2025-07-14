@@ -30,9 +30,10 @@ import {
   FontSizeButton,
   LineHeightButton,
 } from "./utilities/index";
-import { EditorToolbarProps } from "@/types";
+import useEditorStore from "@/store/useEditor";
 
-const EditorToolbar = ({ editor }: EditorToolbarProps) => {
+const EditorToolbar = () => {
+  const { editor } = useEditorStore();
   if (!editor) {
     return null;
   }
@@ -190,7 +191,7 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
       ))}
       <Separator orientation="vertical" className="bg-foreground h-6" />
       {/* Font Family */}
-      <FontFamilyButton editor={editor} />
+      <FontFamilyButton />
       <Separator orientation="vertical" className="bg-foreground h-6" />
       {/* Headings */}
       {sections[2].map((item) => (
@@ -216,24 +217,24 @@ const EditorToolbar = ({ editor }: EditorToolbarProps) => {
 
       <Separator orientation="vertical" className="bg-foreground h-6 w-2" />
       {/* Text Alignment */}
-      <TextAlignment editor={editor} />
+      <TextAlignment />
 
       {/* Lists */}
-      <Lists editor={editor} />
+      <Lists />
 
       {/* Font Size */}
-      <FontSizeButton editor={editor} />
+      <FontSizeButton />
       {/* Text color */}
-      <TextStyle editor={editor} />
+      <TextStyle />
 
       {/* Line Height */}
-      <LineHeightButton editor={editor} />
+      <LineHeightButton />
       {/* Highlight Color */}
-      <HighLightColor editor={editor} />
+      <HighLightColor />
       {/* Links */}
-      <AddLinkButton editor={editor} />
+      <AddLinkButton />
       {/* Images */}
-      <AddImageButton editor={editor} />
+      <AddImageButton />
     </section>
   );
 };

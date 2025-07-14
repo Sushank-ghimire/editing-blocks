@@ -1,6 +1,5 @@
 "use client";
 
-import { AddImageButtonProps } from "@/types";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -22,8 +21,10 @@ import {
   DialogTrigger,
   DialogFooter,
 } from "@/components/ui/dialog";
+import useEditorStore from "@/store/useEditor";
 
-const AddImageButton = ({ editor }: AddImageButtonProps) => {
+const AddImageButton = () => {
+  const { editor } = useEditorStore();
   const [image, setImage] = useState("");
 
   if (!editor) {
