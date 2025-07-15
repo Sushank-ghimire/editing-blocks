@@ -1,23 +1,15 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
-import { useTheme } from "next-themes";
-import Link from "next/link";
-import React from "react";
+import Navbar from "./_components/Navbar";
 
-const Home = () => {
-  const { setTheme } = useTheme();
-
-  const handleThemeChange = () => {
-    setTheme((theme) => (theme === "dark" ? "light" : "dark"));
-  };
+const Homepage = () => {
   return (
-    <div className="flex justify-center flex-col gap-4 items-center min-h-screen w-screen">
-      <Button onClick={handleThemeChange}>Change Theme</Button>
-      <Link href={"/sign-up"}>Signup</Link>
-      <Link href={"/documents/document-id-goes-here"}>Documents</Link>
-    </div>
+    <main className="min-h-screen w-screen">
+      <div className="w-full flex h-fit items-center">
+        <Navbar />
+      </div>
+    </main>
   );
 };
 
-export default Home;
+export default Homepage;
