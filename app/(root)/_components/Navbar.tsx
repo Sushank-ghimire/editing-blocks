@@ -27,6 +27,7 @@ const Navbar = () => {
           src="/logo.png"
           alt="Logo"
           width={40}
+          priority
           height={40}
           className="w-auto h-auto"
         />

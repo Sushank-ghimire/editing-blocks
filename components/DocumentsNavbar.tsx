@@ -85,6 +85,7 @@ const DocumentsNavbar = () => {
       <Link href="/" className="flex items-center w-fit gap-2 ml-4 md:ml-8">
         <Image
           src="/logo.png"
+          priority
           alt="Logo"
           width={40}
           height={40}
