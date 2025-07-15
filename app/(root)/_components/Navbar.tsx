@@ -30,7 +30,7 @@ const Navbar = () => {
           height={40}
           className="w-auto h-auto"
         />
-        <div className="md:flex flex-col hidden">
+        <div className="lg:flex flex-col hidden">
           <span className="font-semibold hidden sm:block">Editing</span>
           <span className="font-semibold hidden sm:block">Blocks</span>
         </div>
