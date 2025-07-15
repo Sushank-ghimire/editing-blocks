@@ -23,17 +23,63 @@ import {
   PlusIcon,
   PrinterIcon,
   Redo,
+  RemoveFormatting,
   StickyNote,
   StrikethroughIcon,
   TableIcon,
+  TableOfContents,
   TextIcon,
   Trash,
   UnderlineIcon,
   Undo,
 } from "lucide-react";
 import { DropdownMenuShortcut } from "./ui/dropdown-menu";
+import useEditorStore from "@/store/useEditor";
 
 const DocumentsNavbar = () => {
+  const { editor } = useEditorStore();
+  if (!editor) return null;
+
+  const insertTable = ({ rows, cols }: { rows: number; cols: number }) => {
+    editor
+      .chain()
+      .focus()
+      .insertTable({ rows, cols, withHeaderRow: false })
+      .run();
+  };
+
+  const handleDownload = (blob: Blob, filename: string) => {
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = filename;
+    a.click();
+  };
+
+  const handleJSONDownload = () => {
+    const content = editor.getJSON();
+    const blob = new Blob([JSON.stringify(content)], {
+      type: "application/json",
+    });
+    handleDownload(blob, `untitled.json`);
+  };
+
+  const handleOnSaveHTML = () => {
+    const content = editor.getHTML();
+    const blob = new Blob([JSON.stringify(content)], {
+      type: "text/html",
+    });
+    handleDownload(blob, `untitled.html`);
+  };
+
+  const handleOnSaveText = () => {
+    const content = editor.getText();
+    const blob = new Blob([JSON.stringify(content)], {
+      type: "text/plain",
+    });
+    handleDownload(blob, `untitled.txt`);
+  };
+
   return (
     <nav className="border-b print:hidden flex p-2 md:p-4 items-center justify-items-start">
       <Link href="/" className="flex items-center w-fit gap-2 ml-4 md:ml-8">
@@ -59,18 +105,27 @@ const DocumentsNavbar = () => {
                     Save
                   </MenubarSubTrigger>
                   <MenubarSubContent>
-                    <MenubarItem className="flex justify-between items-center">
+                    <MenubarItem
+                      onClick={handleJSONDownload}
+                      className="flex justify-between items-center"
+                    >
                       JSON
                       <FileJson2 />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex justify-between items-center">
+                    <MenubarItem
+                      onClick={handleOnSaveHTML}
+                      className="flex justify-between items-center"
+                    >
                       HTML
                       <FileCode2 />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex justify-between items-center">
-                      document
+                    <MenubarItem
+                      onClick={handleOnSaveText}
+                      className="flex justify-between items-center"
+                    >
+                      Text
                       <StickyNote />
                     </MenubarItem>
                     <MenubarSeparator />
@@ -110,7 +165,11 @@ const DocumentsNavbar = () => {
             <MenubarMenu>
               <MenubarTrigger>Edit</MenubarTrigger>
               <MenubarContent>
-                <MenubarItem>
+                <MenubarItem
+                  onClick={() => {
+                    editor.chain().focus().undo().run();
+                  }}
+                >
                   <Undo />
                   Undo
                   <DropdownMenuShortcut className="uppercase">
@@ -118,7 +177,11 @@ const DocumentsNavbar = () => {
                   </DropdownMenuShortcut>
                 </MenubarItem>
                 <MenubarSeparator />
-                <MenubarItem>
+                <MenubarItem
+                  onClick={() => {
+                    editor.chain().focus().redo().run();
+                  }}
+                >
                   <Redo />
                   Redo
                   <DropdownMenuShortcut className="uppercase">
@@ -136,13 +199,37 @@ const DocumentsNavbar = () => {
                     Table
                   </MenubarSubTrigger>
                   <MenubarSubContent>
-                    <MenubarItem>1 X 1</MenubarItem>
+                    <MenubarItem
+                      onClick={() => {
+                        insertTable({ rows: 1, cols: 1 });
+                      }}
+                    >
+                      1 X 1
+                    </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem>2 X 2</MenubarItem>
+                    <MenubarItem
+                      onClick={() => {
+                        insertTable({ rows: 2, cols: 2 });
+                      }}
+                    >
+                      2 X 2
+                    </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem>3 X 3</MenubarItem>
+                    <MenubarItem
+                      onClick={() => {
+                        insertTable({ rows: 3, cols: 3 });
+                      }}
+                    >
+                      3 X 3
+                    </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem>4 X 4</MenubarItem>
+                    <MenubarItem
+                      onClick={() => {
+                        insertTable({ rows: 4, cols: 4 });
+                      }}
+                    >
+                      4 X 4
+                    </MenubarItem>
                   </MenubarSubContent>
                 </MenubarSub>
               </MenubarContent>
@@ -156,27 +243,65 @@ const DocumentsNavbar = () => {
                     Text
                   </MenubarSubTrigger>
                   <MenubarSubContent>
-                    <MenubarItem className="flex items-center justify-between">
+                    <MenubarItem
+                      onClick={() => {
+                        editor.chain().focus().toggleBold().run();
+                      }}
+                      className="flex items-center justify-between"
+                    >
                       Bold
                       <BoldIcon />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex items-center justify-between">
+                    <MenubarItem
+                      onClick={() => {
+                        editor.chain().focus().toggleItalic().run();
+                      }}
+                      className="flex items-center justify-between"
+                    >
                       Italic
                       <ItalicIcon />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex items-center justify-between">
+                    <MenubarItem
+                      onClick={() => {
+                        editor.chain().focus().toggleUnderline().run();
+                      }}
+                      className="flex items-center justify-between"
+                    >
                       Underline
                       <UnderlineIcon />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex items-center justify-between">
+                    <MenubarItem
+                      onClick={() => {
+                        editor.chain().focus().toggleStrike().run();
+                      }}
+                      className="flex items-center justify-between"
+                    >
                       Strikethrough
                       <StrikethroughIcon />
                     </MenubarItem>
                   </MenubarSubContent>
                 </MenubarSub>
+                <MenubarItem
+                  onClick={() => {
+                    editor.chain().focus().unsetAllMarks().run();
+                  }}
+                  className="flex gap-2"
+                >
+                  <RemoveFormatting />
+                  Clear Formatting
+                </MenubarItem>
+                <MenubarItem
+                  onClick={() => {
+                    editor.chain().focus().clearContent().run();
+                  }}
+                  className="flex gap-2"
+                >
+                  <TableOfContents />
+                  Clear Content
+                </MenubarItem>
               </MenubarContent>
             </MenubarMenu>
           </Menubar>
