@@ -21,7 +21,7 @@ export function ConvexClientProvider({ children }: { children: ReactNode }) {
         baseTheme: dark,
       }}
       afterSignOutUrl={"/sign-in"}
-      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY!}
+      publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string}
     >
       <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
         <Authenticated>{children}</Authenticated>
