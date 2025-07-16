@@ -7,6 +7,7 @@ import { dark } from "@clerk/themes";
 import NextTopLoader from "nextjs-toploader";
 import { NuqsAdapter } from "nuqs/adapters/next";
 import { Toaster } from "@/components/ui/sonner";
+import { ConvexClientProvider } from "@/components/providers/convex-client-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -48,8 +49,10 @@ export default function RootLayout({
                 speed={200}
                 showSpinner={true}
               />
-              {children}
-              <Toaster />
+              <ConvexClientProvider>
+                {children}
+                <Toaster />
+              </ConvexClientProvider>
             </ThemeProvider>
           </NuqsAdapter>
         </body>
