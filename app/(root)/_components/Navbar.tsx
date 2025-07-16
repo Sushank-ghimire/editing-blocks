@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Moon, Sun, Laptop } from "lucide-react";
+import { UserButton } from "@clerk/nextjs";
 
 const Navbar = () => {
   const { setTheme } = useTheme();
@@ -45,7 +46,7 @@ const Navbar = () => {
       {/* Theme Switcher */}
       <div className="mr-4 flex gap-3 justify-center items-center">
         {/* Users Profile Component to add further */}
-        <div className="w-8 h-8 bg-primary rounded-full"></div>
+        <UserButton />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" size="icon">
