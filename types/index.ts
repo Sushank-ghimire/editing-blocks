@@ -3,7 +3,6 @@ import { LucideIcon } from "lucide-react";
 
 export type EditorType = Editor | null;
 
-
 export interface ToolbarButtonProps {
   isActive?: boolean;
   icon: LucideIcon;
@@ -24,4 +23,10 @@ export interface MarkerProps {
 export interface IEditorStore {
   editor: null | EditorType;
   initializeEditor: (editor: EditorType) => void;
+}
+
+export interface ITemplate {
+  id: string | number;
+  label: string;
+  logo: string;
 }
