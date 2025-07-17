@@ -30,3 +30,10 @@ export interface ITemplate {
   label: string;
   logo: string;
 }
+
+export interface IDocuments {
+  title: string;
+  _id: string;
+  initialContent: string;
+  logo?: string;
+}

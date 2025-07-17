@@ -1,14 +1,10 @@
 "use client";
 
-import { useQuery } from "convex/react";
 import Navbar from "./_components/Navbar";
 import TemplatesGallary from "./_components/template-gallary";
-import { api } from "@/convex/_generated/api";
+import UserDocuments from "./_components/UserDocuments";
 
 const Homepage = () => {
-  const documents = useQuery(api.documents.getDocuments);
-  console.log(documents);
-
   return (
     <main className="min-h-screen w-screen">
       <div className="w-full flex h-fit items-center">
@@ -16,6 +12,7 @@ const Homepage = () => {
       </div>
       <div className="mt-8">
         <TemplatesGallary />
+        <UserDocuments />
       </div>
     </main>
   );

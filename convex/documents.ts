@@ -1,9 +1,11 @@
 import { mutation, query } from "./_generated/server";
 import { ConvexError, v } from "convex/values";
+import { paginationOptsValidator } from "convex/server";
 
 export const getDocuments = query({
-  handler: async (ctx) => {
-    return ctx.db.query("documents").collect();
+  args: { paginationOpts: paginationOptsValidator },
+  handler: async (ctx, args) => {
+    return ctx.db.query("documents").paginate(args.paginationOpts);
   },
 });
 
