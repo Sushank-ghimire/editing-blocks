@@ -6,11 +6,12 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Edit, EllipsisVertical, Trash } from "lucide-react";
+import { Edit, EllipsisVertical } from "lucide-react";
+import DeleteAlertDialog from "./DeleteAlertDialog";
 
 interface ITableActionsProps {
-  handleDeleteDocument: (docId: string) => void;
-  handleEditDocument: (docId: string) => void;
+  handleDeleteDocument: () => void;
+  handleEditDocument: () => void;
   documentId: string;
 }
 
@@ -28,28 +29,25 @@ const TableActions = ({
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-40">
-        <DropdownMenuItem
-          onClick={() => {
-            handleEditDocument(documentId);
-          }}
-          className="flex justify-between items-center gap-2"
-        >
-          Edit
-          <Edit className="size-4 text-muted-foreground" />
+        <DropdownMenuItem onClick={handleEditDocument} asChild>
+          <Button
+            variant="ghost"
+            className="w-full justify-between items-center"
+          >
+            Edit
+            <Edit className="size-4 text-muted-foreground" />
+          </Button>
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem asChild>
-          <button
-            onClick={() => {
-              handleDeleteDocument(documentId);
-            }}
-            className="flex w-full text-destructive justify-between items-center gap-2 px-2 py-1.5 rounded-sm hover:bg-destructive/10 transition"
-          >
-            Delete
-            <Trash className="size-4 text-destructive" />
-          </button>
+        <DropdownMenuItem
+          onSelect={(e) => e.preventDefault()}
+          onClick={(e) => e.stopPropagation()}
+          className="w-full"
+          asChild
+        >
+          <DeleteAlertDialog onConfirm={handleDeleteDocument} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

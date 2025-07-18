@@ -7,11 +7,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Doc } from "@/convex/_generated/dataModel";
-import { PaginationStatus } from "convex/react";
+import { Doc, Id } from "@/convex/_generated/dataModel";
+import { PaginationStatus, useMutation } from "convex/react";
 import { Building, Loader, UserCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TableActions from "./TableActions";
+import { api } from "@/convex/_generated/api";
 
 export interface IDocumentsTableProps {
   documents: Doc<"documents">[] | undefined;
@@ -24,10 +25,15 @@ const DocumentsTable = ({
   loadMore,
   status,
 }: IDocumentsTableProps) => {
-  const handleDocumentOpen = (documentId: string) => {
+  const remove = useMutation(api.documents.deleteDocumentsById);
+
+  const handleDocumentOpen = (documentId: Id<"documents">) => {
     window.open(`/documents/${documentId}/editor`);
   };
-  const handleDocumentDelete = (documentId: string) => {};
+
+  const handleDocumentDelete = async (documentId: Id<"documents">) => {
+    await remove({ id: documentId });
+  };
 
   if (documents === undefined) {
     return (
@@ -91,9 +97,13 @@ const DocumentsTable = ({
 
                 <TableCell className="text-right flex justify-end">
                   <TableActions
-                    handleDeleteDocument={handleDocumentDelete}
+                    handleDeleteDocument={() => {
+                      handleDocumentDelete(doc._id);
+                    }}
                     documentId={doc._id}
-                    handleEditDocument={handleDocumentOpen}
+                    handleEditDocument={() => {
+                      handleDocumentOpen(doc._id);
+                    }}
                   />
                 </TableCell>
               </TableRow>
