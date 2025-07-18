@@ -2,13 +2,6 @@
 import { usePaginatedQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import DocumentsTable from "./DocumentsTable";
-import {
-  Table,
-  TableBody,
-  TableHead,
-  TableCell,
-  TableHeader,
-} from "@/components/ui/table";
 
 const UserDocuments = () => {
   const { results, loadMore, status } = usePaginatedQuery(
@@ -21,7 +14,6 @@ const UserDocuments = () => {
     },
     { initialNumItems: 5 }
   );
-
   return (
     <div className="w-full flex-col flex items-center h-fit p-6 text-foreground">
       {/* Heading */}
@@ -31,7 +23,7 @@ const UserDocuments = () => {
 
       {/* Carousel with Background-Filled Template Cards */}
       <div className="w-full p-8 md:p-6 mx-auto">
-        <DocumentsTable results={results} loadMore={loadMore} status={status} />
+        <DocumentsTable documents={results} loadMore={loadMore} status={status} />
       </div>
     </div>
   );
