@@ -13,6 +13,7 @@ import { Building, Loader, UserCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TableActions from "./TableActions";
 import { api } from "@/convex/_generated/api";
+import { useRouter } from "nextjs-toploader/app";
 
 export interface IDocumentsTableProps {
   documents: Doc<"documents">[] | undefined;
@@ -29,8 +30,14 @@ const DocumentsTable = ({
 
   const rename = useMutation(api.documents.updateDocumentById);
 
+  const router = useRouter();
+
   const handleDocumentOpen = (documentId: Id<"documents">) => {
     window.open(`/documents/${documentId}/editor`);
+  };
+
+  const handleRowClick = (documentId: Id<"documents">) => {
+    router.push(`/documents/${documentId}/editor`);
   };
 
   const handleDocumentDelete = async (documentId: Id<"documents">) => {
@@ -79,6 +86,9 @@ const DocumentsTable = ({
           ) : (
             documents.map((doc) => (
               <TableRow
+                onClick={() => {
+                  handleRowClick(doc._id);
+                }}
                 key={doc._id}
                 className="hover:bg-muted/20 cursor-pointer transition"
               >

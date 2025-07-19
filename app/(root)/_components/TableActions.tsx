@@ -42,12 +42,19 @@ const TableActions = ({
 
         <DropdownMenuSeparator />
 
-        <DropdownMenuItem onClick={handleEditDocument} asChild>
+        <DropdownMenuItem
+          onSelect={(e) => e.preventDefault()}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleEditDocument();
+          }}
+          asChild
+        >
           <Button
             variant="ghost"
-            className="w-full justify-between items-center"
+            className="w-full text-muted-foreground justify-between hover:bg-muted"
           >
-            Edit
+            Edit in new tab
             <Edit className="size-4 text-muted-foreground" />
           </Button>
         </DropdownMenuItem>
