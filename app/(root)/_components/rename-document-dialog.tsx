@@ -10,7 +10,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 import { Button } from "@/components/ui/button";
-import { Edit, FilePenIcon, PenIcon } from "lucide-react";
+import { FilePenIcon, PenIcon } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Id } from "@/convex/_generated/dataModel";
 import { useState } from "react";

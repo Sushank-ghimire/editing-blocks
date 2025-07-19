@@ -6,7 +6,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Edit, EllipsisVertical } from "lucide-react";
+import { EllipsisVertical, ExternalLink } from "lucide-react";
 import DeleteAlertDialog from "./DeleteAlertDialog";
 import { Id } from "@/convex/_generated/dataModel";
 import RenameDocumentDialog from "./rename-document-dialog";
@@ -54,8 +54,8 @@ const TableActions = ({
             variant="ghost"
             className="w-full text-muted-foreground justify-between hover:bg-muted"
           >
-            Edit in new tab
-            <Edit className="size-4 text-muted-foreground" />
+            Open in new tab
+            <ExternalLink className="size-4 text-muted-foreground" />
           </Button>
         </DropdownMenuItem>
 

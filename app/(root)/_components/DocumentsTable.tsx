@@ -28,8 +28,6 @@ const DocumentsTable = ({
 }: IDocumentsTableProps) => {
   const remove = useMutation(api.documents.deleteDocumentsById);
 
-  const rename = useMutation(api.documents.updateDocumentById);
-
   const router = useRouter();
 
   const handleDocumentOpen = (documentId: Id<"documents">) => {
@@ -42,13 +40,6 @@ const DocumentsTable = ({
 
   const handleDocumentDelete = async (documentId: Id<"documents">) => {
     await remove({ id: documentId });
-  };
-
-  const handleDocumentRename = async (
-    documentId: Id<"documents">,
-    title: string
-  ) => {
-    await rename({ id: documentId, title });
   };
 
   if (documents === undefined) {
