@@ -27,12 +27,21 @@ const DocumentsTable = ({
 }: IDocumentsTableProps) => {
   const remove = useMutation(api.documents.deleteDocumentsById);
 
+  const rename = useMutation(api.documents.updateDocumentById);
+
   const handleDocumentOpen = (documentId: Id<"documents">) => {
     window.open(`/documents/${documentId}/editor`);
   };
 
   const handleDocumentDelete = async (documentId: Id<"documents">) => {
     await remove({ id: documentId });
+  };
+
+  const handleDocumentRename = async (
+    documentId: Id<"documents">,
+    title: string
+  ) => {
+    await rename({ id: documentId, title });
   };
 
   if (documents === undefined) {
@@ -100,10 +109,11 @@ const DocumentsTable = ({
                     handleDeleteDocument={() => {
                       handleDocumentDelete(doc._id);
                     }}
-                    documentId={doc._id}
                     handleEditDocument={() => {
                       handleDocumentOpen(doc._id);
                     }}
+                    documentId={doc._id}
+                    documentName={doc.title}
                   />
                 </TableCell>
               </TableRow>

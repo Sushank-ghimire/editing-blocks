@@ -8,17 +8,21 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Edit, EllipsisVertical } from "lucide-react";
 import DeleteAlertDialog from "./DeleteAlertDialog";
+import { Id } from "@/convex/_generated/dataModel";
+import RenameDocumentDialog from "./rename-document-dialog";
 
 interface ITableActionsProps {
   handleDeleteDocument: () => void;
   handleEditDocument: () => void;
-  documentId: string;
+  documentId: Id<"documents">;
+  documentName?: string;
 }
 
 const TableActions = ({
   handleDeleteDocument,
   handleEditDocument,
   documentId,
+  documentName = "",
 }: ITableActionsProps) => {
   return (
     <DropdownMenu>
@@ -29,6 +33,15 @@ const TableActions = ({
       </DropdownMenuTrigger>
 
       <DropdownMenuContent align="end" className="w-40">
+        <DropdownMenuItem onClick={handleEditDocument} asChild>
+          <RenameDocumentDialog
+            currentName={documentName}
+            documentId={documentId}
+          />
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator />
+
         <DropdownMenuItem onClick={handleEditDocument} asChild>
           <Button
             variant="ghost"
