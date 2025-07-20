@@ -7,18 +7,28 @@ import {
   AuthLoading,
 } from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { ClerkProvider, SignIn, useAuth } from "@clerk/clerk-react";
-import { dark } from "@clerk/themes";
+import { dark, neobrutalism } from "@clerk/themes";
 import Loading from "@/app/loading";
+import { useTheme } from "next-themes";
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 export function ConvexClientProvider({ children }: { children: ReactNode }) {
+  const { resolvedTheme } = useTheme();
+  const [isMounted, setIsMounted] = useState(false);
+
+  // Prevent hydration mismatch
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted || !resolvedTheme) return <Loading />;
   return (
     <ClerkProvider
       appearance={{
-        baseTheme: dark,
+        baseTheme: resolvedTheme === "dark" ? dark : neobrutalism,
       }}
       afterSignOutUrl={"/sign-in"}
       publishableKey={process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY as string}
