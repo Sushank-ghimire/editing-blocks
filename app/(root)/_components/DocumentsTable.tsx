@@ -49,8 +49,8 @@ const DocumentsTable = ({
         <TableHeader className="bg-muted/40">
           <TableRow>
             <TableHead className="font-semibold">Name</TableHead>
-            <TableHead className="font-semibold text-center">Shared</TableHead>
-            <TableHead className="font-semibold text-center">Created</TableHead>
+            <TableHead className="font-semibold">Shared</TableHead>
+            <TableHead className="font-semibold">Created</TableHead>
             <TableHead className="font-semibold text-right pr-6">
               Actions
             </TableHead>
@@ -77,21 +77,21 @@ const DocumentsTable = ({
                   {doc.title || "Untitled Document"}
                 </TableCell>
 
-                <TableCell className="text-center">
+                <TableCell className="text-left">
                   {doc.organizationId ? (
-                    <div className="flex justify-center items-center gap-3">
+                    <div className="flex justify-start items-center gap-3">
                       <Building className="size-4" />
                       Organization
                     </div>
                   ) : (
-                    <div className="flex items-center justify-center gap-3">
+                    <div className="flex items-center justify-start gap-3">
                       <UserCircle className="size-4" />
                       Personal
                     </div>
                   )}
                 </TableCell>
 
-                <TableCell className="text-center text-sm text-muted-foreground">
+                <TableCell className="text-sm text-muted-foreground">
                   {new Date(doc._creationTime).toLocaleString()}
                 </TableCell>
 
