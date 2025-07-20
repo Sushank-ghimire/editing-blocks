@@ -16,6 +16,7 @@ import { Id } from "@/convex/_generated/dataModel";
 import { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
+import { toast } from "sonner";
 
 interface IRenameDocumentDialogProps {
   documentId: Id<"documents">;
@@ -36,6 +37,7 @@ const RenameDocumentDialog = ({
 
   const handleDocumentRename = async () => {
     await rename({ id: documentId, title: name });
+    toast.success("document updated successfully");
   };
 
   return (

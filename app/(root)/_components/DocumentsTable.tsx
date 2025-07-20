@@ -13,6 +13,7 @@ import { Building, Loader, UserCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import TableActions from "./TableActions";
 import { api } from "@/convex/_generated/api";
+import { toast } from "sonner";
 
 export interface IDocumentsTableProps {
   documents: Doc<"documents">[] | undefined;
@@ -32,7 +33,16 @@ const DocumentsTable = ({
   };
 
   const handleDocumentDelete = async (documentId: Id<"documents">) => {
-    await remove({ id: documentId });
+    try {
+      toast.success("document deleted successfully");
+      await remove({ id: documentId });
+    } catch (error) {
+      if (error instanceof Error) {
+        toast.error(error.message);
+        return;
+      }
+      toast.error("something went wrong");
+    }
   };
 
   if (documents === undefined) {
