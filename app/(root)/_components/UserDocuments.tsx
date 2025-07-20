@@ -2,16 +2,13 @@
 import { usePaginatedQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import DocumentsTable from "./DocumentsTable";
+import { useSearchParams } from "@/hooks/use-search-param";
 
 const UserDocuments = () => {
+  const [search] = useSearchParams("search");
   const { results, loadMore, status } = usePaginatedQuery(
     api.documents.getDocuments,
-    {
-      paginationOpts: {
-        numItems: 5,
-        cursor: null,
-      },
-    },
+    { search },
     { initialNumItems: 5 }
   );
   return (
@@ -23,7 +20,11 @@ const UserDocuments = () => {
 
       {/* Carousel with Background-Filled Template Cards */}
       <div className="w-full p-8 md:p-6 mx-auto">
-        <DocumentsTable documents={results} loadMore={loadMore} status={status} />
+        <DocumentsTable
+          documents={results}
+          loadMore={loadMore}
+          status={status}
+        />
       </div>
     </div>
   );
