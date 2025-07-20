@@ -6,10 +6,11 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { EllipsisVertical, ExternalLink } from "lucide-react";
+import { Edit, EllipsisVertical, ExternalLink } from "lucide-react";
 import DeleteAlertDialog from "./DeleteAlertDialog";
 import { Id } from "@/convex/_generated/dataModel";
 import RenameDocumentDialog from "./rename-document-dialog";
+import { useRouter } from "next/navigation";
 
 interface ITableActionsProps {
   handleDeleteDocument: () => void;
@@ -24,6 +25,7 @@ const TableActions = ({
   documentId,
   documentName = "",
 }: ITableActionsProps) => {
+  const router = useRouter();
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -56,6 +58,24 @@ const TableActions = ({
           >
             Open in new tab
             <ExternalLink className="size-4 text-muted-foreground" />
+          </Button>
+        </DropdownMenuItem>
+
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          onSelect={(e) => e.preventDefault()}
+          onClick={(e) => {
+            e.stopPropagation();
+            router.push(`/documents/${documentId}/editor`);
+          }}
+          asChild
+        >
+          <Button
+            variant="ghost"
+            className="w-full text-muted-foreground justify-between hover:bg-muted"
+          >
+            Edit
+            <Edit className="size-4 text-muted-foreground" />
           </Button>
         </DropdownMenuItem>
 
