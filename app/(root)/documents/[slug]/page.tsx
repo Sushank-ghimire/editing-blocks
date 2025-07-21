@@ -4,10 +4,7 @@ interface IDocumentPageProps {
   params: Promise<{ slug: string }>;
 }
 
-const DocumentPage = async ({ params }: IDocumentPageProps) => {
-  const param = await params;
-  console.log(param);
-
+const DocumentPage = async ({}: IDocumentPageProps) => {
   return (
     <section className="min-h-screen w-screen">
       <Editor />

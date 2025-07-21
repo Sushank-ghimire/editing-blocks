@@ -28,9 +28,16 @@ import { CustomLineHeightExtension } from "@/extensions/line-height";
 import { Ruler } from "@/components/editor/utilities";
 import useEditorStore from "@/store/useEditor";
 import { useEffect } from "react";
+import {
+  useLiveblocksExtension,
+  FloatingToolbar,
+} from "@liveblocks/react-tiptap";
+import { Threads } from "../Threads";
 
 const Tiptap = () => {
   const { initializeEditor } = useEditorStore();
+
+  const liveblocks = useLiveblocksExtension();
 
   const editor = useEditor({
     immediatelyRender: false,
@@ -80,6 +87,7 @@ const Tiptap = () => {
       }),
       CustomFontSizeExtension,
       CustomLineHeightExtension,
+      liveblocks,
     ],
     content: `
     Start Writing Your Content
@@ -121,6 +129,8 @@ const Tiptap = () => {
               className="w-full break-words prose max-w-none"
               editor={editor}
             />
+            <Threads editor={editor} />
+            <FloatingToolbar editor={editor} />
           </div>
         </div>
       </div>
