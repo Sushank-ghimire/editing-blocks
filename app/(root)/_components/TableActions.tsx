@@ -10,7 +10,7 @@ import { Edit, EllipsisVertical, ExternalLink } from "lucide-react";
 import DeleteAlertDialog from "./DeleteAlertDialog";
 import { Id } from "@/convex/_generated/dataModel";
 import RenameDocumentDialog from "./rename-document-dialog";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app";
 
 interface ITableActionsProps {
   handleDeleteDocument: () => void;
@@ -65,7 +65,6 @@ const TableActions = ({
         <DropdownMenuItem
           onSelect={(e) => e.preventDefault()}
           onClick={(e) => {
-            e.stopPropagation();
             router.push(`/documents/${documentId}/editor`);
           }}
           asChild
