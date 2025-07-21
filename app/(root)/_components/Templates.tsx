@@ -7,6 +7,7 @@ import { useMutation } from "convex/react";
 import Image from "next/image";
 import { useRouter } from "nextjs-toploader/app";
 import React from "react";
+import { toast } from "sonner";
 
 interface ITemplateProps {
   template: ITemplate;
@@ -18,9 +19,16 @@ const Templates = ({ template }: ITemplateProps) => {
   const create = useMutation(api.documents.createDocuments);
 
   const handleClick = async (title: string, initialContent: string) => {
-    create({ title, initialContent }).then((documentId) => {
-      router.push(`/documents/${documentId}`);
-    });
+    create({ title, initialContent })
+      .then((documentId) => {
+        toast.success("Document created");
+        setTimeout(() => {
+          router.push(`/documents/${documentId}`);
+        }, 500);
+      })
+      .catch(() => {
+        toast.error("Failed to create document");
+      });
   };
 
   return (
