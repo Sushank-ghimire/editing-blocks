@@ -35,6 +35,7 @@ import {
 } from "lucide-react";
 import { DropdownMenuShortcut } from "./ui/dropdown-menu";
 import useEditorStore from "@/store/useEditor";
+import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 
 const DocumentsNavbar = () => {
   const { editor } = useEditorStore();
@@ -307,6 +308,16 @@ const DocumentsNavbar = () => {
             </MenubarMenu>
           </Menubar>
         </div>
+      </div>{" "}
+      {/* Users Profile Component to add further */}
+      <div className="md:flex justify-end w-full hidden items-center gap-4 mr-6">
+        <OrganizationSwitcher
+          afterLeaveOrganizationUrl="/"
+          afterCreateOrganizationUrl={"/"}
+          afterSelectOrganizationUrl={"/"}
+          afterSelectPersonalUrl={"/"}
+        />
+        <UserButton />
       </div>
     </nav>
   );
