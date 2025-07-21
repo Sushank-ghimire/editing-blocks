@@ -36,6 +36,7 @@ import {
 import { DropdownMenuShortcut } from "./ui/dropdown-menu";
 import useEditorStore from "@/store/useEditor";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
+import ThemeSwitcher from "./ThemeSwitcher";
 
 const DocumentsNavbar = () => {
   const { editor } = useEditorStore();
@@ -318,6 +319,7 @@ const DocumentsNavbar = () => {
           afterSelectPersonalUrl={"/"}
         />
         <UserButton />
+        <ThemeSwitcher />
       </div>
     </nav>
   );
