@@ -91,9 +91,7 @@ const Tiptap = () => {
       CustomLineHeightExtension,
       liveblocks,
     ],
-    content: `
-    Start Writing Your Content
-    `,
+    content: ``,
     editorProps: {
       attributes: {
         class:

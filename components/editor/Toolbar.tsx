@@ -144,8 +144,9 @@ const EditorToolbar = () => {
         label: "Comment",
         icon: MessageSquareDiff,
         onClick: () => {
-          console.log("Comment added");
+          editor.chain().focus().addPendingComment().run();
         },
+        isActive: editor.isActive("liveblocksCommentMark"),
       },
       {
         label: "List",
