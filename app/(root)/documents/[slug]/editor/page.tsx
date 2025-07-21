@@ -42,7 +42,9 @@ const Tiptap = () => {
   const editor = useEditor({
     immediatelyRender: false,
     extensions: [
-      StarterKit,
+      StarterKit.configure({
+        history: false,
+      }),
       Underline,
       Subscript,
       Superscript,
