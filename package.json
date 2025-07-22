@@ -13,6 +13,7 @@
     "@clerk/themes": "^2.2.52",
     "@lexical/rich-text": "^0.32.1",
     "@liveblocks/client": "^3.1.4",
+    "@liveblocks/node": "^3.1.4",
     "@liveblocks/react": "^3.1.4",
     "@liveblocks/react-tiptap": "^3.1.4",
     "@liveblocks/react-ui": "^3.1.4",
