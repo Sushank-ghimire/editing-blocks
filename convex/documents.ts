@@ -124,3 +124,14 @@ export const updateDocumentById = mutation({
     return await ctx.db.patch(args.id, { title: args.title });
   },
 });
+
+export const getDocumentById = query({
+  args: { id: v.id("documents") },
+  handler: async (ctx, args) => {
+    const document = await ctx.db.get(args.id);
+    if (!document) {
+      throw new ConvexError("Requested document not found");
+    }
+    return document;
+  },
+});
