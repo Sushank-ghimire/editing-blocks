@@ -1,12 +1,6 @@
-import { Metadata } from "next";
+"use client";
 import { SignUp } from "@clerk/nextjs";
 
-export const metadata: Metadata = {
-  title: "Signup – Editing Blocks",
-  description:
-    "Join Editing Blocks and start creating and editing documents collaboratively. Work together with your team in real time, organize ideas, and boost productivity.",
-};
-
-export default async function SignupPage() {
-  return <SignUp forceRedirectUrl={"/"} afterSignUpUrl={"/"} />;
+export default function SignupPage() {
+  return <SignUp />;
 }
