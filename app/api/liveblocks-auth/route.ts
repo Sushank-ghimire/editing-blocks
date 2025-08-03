@@ -10,9 +10,13 @@ const liveblocks = new Liveblocks({
   secret: process.env.NEXT_PUBLIC_LIVEBLOCKS_SECRET_KEY!,
 });
 
+// TODO: Authentication from backend not public key
+
 export async function POST(req: NextRequest) {
   try {
     const { sessionClaims } = await auth();
+    console.log(sessionClaims);
+
     if (!sessionClaims) {
       return NextResponse.json(
         { message: "Unauthorized user" },
@@ -21,6 +25,8 @@ export async function POST(req: NextRequest) {
     }
 
     const user = await currentUser();
+    console.log(user);
+
     if (!user) {
       return NextResponse.json(
         { message: "Unauthorized user" },

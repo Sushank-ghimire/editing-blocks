@@ -1,35 +1,24 @@
 "use client";
-
-import { ConvexReactClient } from "convex/react";
+import {
+  Authenticated,
+  ConvexReactClient,
+  Unauthenticated,
+} from "convex/react";
 import { ConvexProviderWithClerk } from "convex/react-clerk";
-import { ReactNode, useEffect, useState } from "react";
-import { ClerkProvider, useAuth } from "@clerk/nextjs";
-import { dark, neobrutalism } from "@clerk/themes";
-import Loading from "@/app/loading";
-import { useTheme } from "next-themes";
+import { ReactNode } from "react";
+import { SignInButton, useAuth } from "@clerk/nextjs";
 
 const convex = new ConvexReactClient(process.env.NEXT_PUBLIC_CONVEX_URL!);
 
 export function ConvexClientProvider({ children }: { children: ReactNode }) {
-  const { resolvedTheme } = useTheme();
-  const [isMounted, setIsMounted] = useState(false);
-
-  // Prevent hydration mismatch
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted || !resolvedTheme) return <Loading />;
   return (
-    <ClerkProvider
-      appearance={{
-        baseTheme: resolvedTheme === "dark" ? dark : neobrutalism,
-      }}
-      afterSignOutUrl={"/sign-in"}
-    >
-      <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
-        {children}
-      </ConvexProviderWithClerk>
-    </ClerkProvider>
+    <ConvexProviderWithClerk useAuth={useAuth} client={convex}>
+      <Authenticated>{children}</Authenticated>
+      <Unauthenticated>
+        <div className="flex justify-center min-h-screen bg-background w-screen items-center">
+          <SignInButton />
+        </div>
+      </Unauthenticated>
+    </ConvexProviderWithClerk>
   );
 }

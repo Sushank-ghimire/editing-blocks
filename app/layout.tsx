@@ -8,6 +8,8 @@ import NextTopLoader from "nextjs-toploader";
 import { NuqsAdapter } from "nuqs/adapters/next";
 import { Toaster } from "@/components/ui/sonner";
 import { ConvexClientProvider } from "@/components/providers/convex-client-provider";
+import { ClerkProvider } from "@clerk/nextjs";
+import { dark } from "@clerk/themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,25 +33,32 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
-      >
-        <NuqsAdapter>
-          <ThemeProvider attribute="class" defaultTheme="system">
-            <NextTopLoader
-              color="#6366f1"
-              height={3}
-              speed={200}
-              showSpinner={true}
-            />
-            <ConvexClientProvider>
-              {children}
-              <Toaster />
-            </ConvexClientProvider>
-          </ThemeProvider>
-        </NuqsAdapter>
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        baseTheme: dark,
+      }}
+      afterSignOutUrl={"/sign-in"}
+    >
+      <html lang="en" suppressHydrationWarning>
+        <body
+          className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}
+        >
+          <NuqsAdapter>
+            <ThemeProvider attribute="class" defaultTheme="system">
+              <NextTopLoader
+                color="#6366f1"
+                height={3}
+                speed={200}
+                showSpinner={true}
+              />
+              <ConvexClientProvider>
+                {children}
+                <Toaster />
+              </ConvexClientProvider>
+            </ThemeProvider>
+          </NuqsAdapter>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
