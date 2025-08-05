@@ -38,6 +38,7 @@ import useEditorStore from "@/store/useEditor";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Avatars from "./avatars";
+import Inbox from "./inbox";
 
 const DocumentsNavbar = () => {
   const { editor } = useEditorStore();
@@ -313,6 +314,7 @@ const DocumentsNavbar = () => {
       </div>{" "}
       {/* Users Profile Component to add further */}
       <div className="md:flex justify-end w-full hidden items-center gap-4 mr-6">
+        <Inbox />
         <Avatars />
         <OrganizationSwitcher
           afterLeaveOrganizationUrl="/"
