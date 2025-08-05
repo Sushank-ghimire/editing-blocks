@@ -37,3 +37,9 @@ export interface IDocuments {
   initialContent: string;
   logo?: string;
 }
+
+export interface IUsers {
+  id: string;
+  name: string;
+  avatar: string;
+}
