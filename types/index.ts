@@ -43,3 +43,8 @@ export interface IUsers {
   name: string;
   avatar: string;
 }
+
+export interface IAvatarProps {
+  src: string;
+  name: string;
+}

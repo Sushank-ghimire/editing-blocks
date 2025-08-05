@@ -53,8 +53,8 @@ export function Room({ children }: { children: ReactNode }) {
       }}
       resolveRoomsInfo={() => []}
       throttle={16}
-      // publicApiKey={process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!}
-      authEndpoint={"/api/liveblocks-auth"}
+      publicApiKey={process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!}
+      // authEndpoint={"/api/liveblocks-auth"}
     >
       <RoomProvider id={params.slug}>
         <ClientSideSuspense fallback={<Loader title="Loading user's room" />}>
