@@ -64,7 +64,10 @@ export function Room({ children }: { children: ReactNode }) {
       //   return await res.json();
       // }}
     >
-      <RoomProvider id={params.slug}>
+      <RoomProvider
+        initialStorage={{ leftMargin: 50, rightMargin: 50 }}
+        id={params.slug}
+      >
         <ClientSideSuspense fallback={<Loader title="Loading user's room" />}>
           {children}
         </ClientSideSuspense>

@@ -65,7 +65,7 @@ const TableActions = ({
         <DropdownMenuItem
           onSelect={(e) => e.preventDefault()}
           onClick={() => {
-            router.push(`/documents/${documentId}/editor`);
+            router.push(`/documents/${documentId}`);
           }}
           asChild
         >

@@ -29,7 +29,7 @@ const DocumentsTable = ({
   const remove = useMutation(api.documents.deleteDocumentsById);
 
   const handleDocumentOpen = (documentId: Id<"documents">) => {
-    window.open(`/documents/${documentId}/editor`);
+    window.open(`/documents/${documentId}`);
   };
 
   const handleDocumentDelete = async (documentId: Id<"documents">) => {
