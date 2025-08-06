@@ -4,13 +4,24 @@ import { MarkerProps } from "@/types";
 import { Triangle } from "lucide-react";
 import { useTheme } from "next-themes";
 import React, { useRef, useState } from "react";
+import { useStorage, useMutation } from "@liveblocks/react/suspense";
 
 const markers = Array.from({ length: 102 }, (_, i) => i);
 
 const Ruler = () => {
+  const leftMrg = useStorage((root) => root.leftMargin);
+  const rightMrg = useStorage((root) => root.rightMargin);
   const { editor } = useEditorStore();
-  const [leftMargin, setLeftMargin] = useState(0);
-  const [rightMargin, setRightMargin] = useState(0);
+  const [leftMargin, setLeftMargin] = useState(leftMrg ?? 0);
+  const [rightMargin, setRightMargin] = useState(rightMrg ?? 0);
+
+  const updateLeftMargin = useMutation(({ storage }, position: number) => {
+    storage.set("leftMargin", position);
+  }, []);
+
+  const updateRightMargin = useMutation(({ storage }, position: number) => {
+    storage.set("rightMargin", position);
+  }, []);
 
   const [isDraggingLeft, setIsDraggingLeft] = useState(false);
   const [isDraggingRight, setIsDraggingRight] = useState(false);
@@ -27,9 +38,11 @@ const Ruler = () => {
   };
 
   const handleLeftDoubleClick = () => {
+    updateLeftMargin(0);
     setLeftMargin(0);
   };
   const handleRightDoubleClick = () => {
+    updateRightMargin(0);
     setRightMargin(0);
   };
 
@@ -72,6 +85,7 @@ const Ruler = () => {
         if (isDraggingLeft) {
           const maxLeft = width - rightMargin - 100;
           const newLeft = Math.min(clampedX, maxLeft);
+          updateLeftMargin(newLeft);
           setLeftMargin(newLeft);
         }
 
@@ -79,6 +93,7 @@ const Ruler = () => {
           const distanceFromRight = width - clampedX;
           const maxRight = width - leftMargin - 100;
           const newRight = Math.min(distanceFromRight, maxRight);
+          updateRightMargin(newRight);
           setRightMargin(newRight);
         }
       }

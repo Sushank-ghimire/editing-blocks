@@ -33,9 +33,14 @@ import {
   FloatingToolbar,
 } from "@liveblocks/react-tiptap";
 import { Threads } from "../Threads";
+import { useStorage } from "@liveblocks/react/suspense";
 
 const Tiptap = () => {
   const { initializeEditor } = useEditorStore();
+
+  const leftMargin = useStorage((root) => root.leftMargin);
+
+  const rightMargin = useStorage((root) => root.rightMargin);
 
   const liveblocks = useLiveblocksExtension();
 
@@ -96,6 +101,7 @@ const Tiptap = () => {
       attributes: {
         class:
           "prose dark:prose-invert max-w-none md:min-h-[450px] h-[90vh] w-full outline-none transition-all",
+        style: `padding-left: ${leftMargin ?? 0}px; padding-right: ${rightMargin ?? 0}px;`,
       },
     },
   });
