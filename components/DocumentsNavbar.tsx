@@ -42,9 +42,15 @@ import Inbox from "./inbox";
 import { Doc } from "@/convex/_generated/dataModel";
 import { jsPDF } from "jspdf";
 import { useStorage } from "@liveblocks/react/suspense";
+import { useMutation } from "convex/react";
+import { api } from "@/convex/_generated/api";
+import { useRouter } from "nextjs-toploader/app";
+import { toast } from "sonner";
 
 const DocumentsNavbar = ({ doc }: { doc: Doc<"documents"> }) => {
   const { editor } = useEditorStore();
+  const router = useRouter();
+  const createDocument = useMutation(api.documents.createDocuments);
 
   const leftMargin = useStorage((root) => root.leftMargin) ?? 0;
   const rightMargin = useStorage((root) => root.rightMargin) ?? 0;
@@ -57,6 +63,24 @@ const DocumentsNavbar = ({ doc }: { doc: Doc<"documents"> }) => {
       .focus()
       .insertTable({ rows, cols, withHeaderRow: false })
       .run();
+  };
+
+  const handleNewDocumentCreate = () => {
+    createDocument({
+      title: "Untitled Document",
+      initialContent: "",
+    })
+      .catch((err) => {
+        toast.error(
+          err instanceof Error ? err.message : "Something went wrong"
+        );
+      })
+      .then((id) => {
+        toast.success("Document created successfully");
+        setTimeout(() => {
+          router.push(`/documents/${id}`);
+        }, 300);
+      });
   };
 
   const handleDownload = (blob: Blob, filename: string) => {
@@ -169,19 +193,12 @@ const DocumentsNavbar = ({ doc }: { doc: Doc<"documents"> }) => {
                   </MenubarSubContent>
                 </MenubarSub>
                 <MenubarSeparator />
-                <MenubarItem className="flex gap-3">
+                <MenubarItem
+                  onClick={handleNewDocumentCreate}
+                  className="flex gap-3"
+                >
                   <PlusIcon />
                   New Document
-                </MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem className="flex gap-3">
-                  <PenIcon />
-                  Rename
-                </MenubarItem>
-                <MenubarSeparator />
-                <MenubarItem className="flex gap-3">
-                  <Trash />
-                  Trash
                 </MenubarItem>
                 <MenubarSeparator />
                 <MenubarItem
