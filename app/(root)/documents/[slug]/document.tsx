@@ -1,5 +1,5 @@
 "use client";
-import Editor from "./editor/page";
+import Editor from "./editor";
 import { Preloaded, usePreloadedQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 

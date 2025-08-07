@@ -32,12 +32,16 @@ import {
   useLiveblocksExtension,
   FloatingToolbar,
 } from "@liveblocks/react-tiptap";
-import { Threads } from "../Threads";
+import { Threads } from "./Threads";
 import { useStorage } from "@liveblocks/react/suspense";
 import { Doc } from "@/convex/_generated/dataModel";
 import { DocumentsNavbar } from "@/components/index";
 
-const Tiptap = ({ doc }: { doc: Doc<"documents"> }) => {
+interface IEditorProps {
+  doc: Doc<"documents">;
+}
+
+const Tiptap = ({ doc }: IEditorProps) => {
   const { initializeEditor } = useEditorStore();
 
   const leftMargin = useStorage((root) => root.leftMargin);
