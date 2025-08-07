@@ -39,9 +39,11 @@ import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import ThemeSwitcher from "./ThemeSwitcher";
 import Avatars from "./avatars";
 import Inbox from "./inbox";
+import { Doc } from "@/convex/_generated/dataModel";
 
-const DocumentsNavbar = () => {
+const DocumentsNavbar = ({ doc }: { doc: Doc<"documents"> }) => {
   const { editor } = useEditorStore();
+
   if (!editor) return null;
 
   const insertTable = ({ rows, cols }: { rows: number; cols: number }) => {
@@ -65,7 +67,7 @@ const DocumentsNavbar = () => {
     const blob = new Blob([JSON.stringify(content)], {
       type: "application/json",
     });
-    handleDownload(blob, `untitled.json`);
+    handleDownload(blob, `${doc.title}.json`);
   };
 
   const handleOnSaveHTML = () => {
@@ -73,7 +75,7 @@ const DocumentsNavbar = () => {
     const blob = new Blob([JSON.stringify(content)], {
       type: "text/html",
     });
-    handleDownload(blob, `untitled.html`);
+    handleDownload(blob, `${doc.title}.html`);
   };
 
   const handleOnSaveText = () => {
@@ -81,7 +83,7 @@ const DocumentsNavbar = () => {
     const blob = new Blob([JSON.stringify(content)], {
       type: "text/plain",
     });
-    handleDownload(blob, `untitled.txt`);
+    handleDownload(blob, `${doc.title}.txt`);
   };
 
   return (
@@ -98,7 +100,7 @@ const DocumentsNavbar = () => {
       </Link>
       {/* Middle: Input */}
       <div className="ml-8 md:ml-6">
-        <DocumentInput />
+        <DocumentInput document={doc} />
         <div className="flex justify-items-start">
           <Menubar className="border-none bg-transparent shadow-none px-0 w-fit text-foreground print:hidden">
             <MenubarMenu>
@@ -311,7 +313,7 @@ const DocumentsNavbar = () => {
             </MenubarMenu>
           </Menubar>
         </div>
-      </div>{" "}
+      </div>
       {/* Users Profile Component to add further */}
       <div className="md:flex justify-end w-full hidden items-center gap-4 mr-6">
         <Inbox />

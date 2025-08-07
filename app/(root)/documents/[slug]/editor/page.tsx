@@ -34,8 +34,10 @@ import {
 } from "@liveblocks/react-tiptap";
 import { Threads } from "../Threads";
 import { useStorage } from "@liveblocks/react/suspense";
+import { Doc } from "@/convex/_generated/dataModel";
+import { DocumentsNavbar } from "@/components/index";
 
-const Tiptap = () => {
+const Tiptap = ({ doc }: { doc: Doc<"documents"> }) => {
   const { initializeEditor } = useEditorStore();
 
   const leftMargin = useStorage((root) => root.leftMargin);
@@ -96,7 +98,7 @@ const Tiptap = () => {
       CustomLineHeightExtension,
       liveblocks,
     ],
-    content: ``,
+    content: `${doc.initialContent}`,
     editorProps: {
       attributes: {
         class:
@@ -116,6 +118,7 @@ const Tiptap = () => {
 
   return (
     <TooltipProvider>
+      <DocumentsNavbar doc={doc} />
       <div className="w-full flex flex-col items-center px-4 py-6 gap-4">
         {/* Sticky, Scrollable Toolbar */}
         <div className="w-full max-w-5xl overflow-x-auto scrollbar-hide sticky top-0 z-20 bg-background shadow-sm rounded-md border border-input print:hidden flex justify-center items-center p-3">

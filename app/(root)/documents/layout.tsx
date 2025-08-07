@@ -1,4 +1,3 @@
-import DocumentsNavbar from "@/components/DocumentsNavbar";
 import { Room } from "./[slug]/Room";
 
 interface IDocumentLayout {
@@ -9,7 +8,6 @@ const DocumentsLayout = ({ children }: IDocumentLayout) => {
   return (
     <Room>
       <main className="min-h-screen w-screen overflow-x-hidden">
-        <DocumentsNavbar />
         {children}
       </main>
     </Room>
