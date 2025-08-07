@@ -40,9 +40,14 @@ import ThemeSwitcher from "./ThemeSwitcher";
 import Avatars from "./avatars";
 import Inbox from "./inbox";
 import { Doc } from "@/convex/_generated/dataModel";
+import { jsPDF } from "jspdf";
+import { useStorage } from "@liveblocks/react/suspense";
 
 const DocumentsNavbar = ({ doc }: { doc: Doc<"documents"> }) => {
   const { editor } = useEditorStore();
+
+  const leftMargin = useStorage((root) => root.leftMargin) ?? 0;
+  const rightMargin = useStorage((root) => root.rightMargin) ?? 0;
 
   if (!editor) return null;
 
@@ -84,6 +89,24 @@ const DocumentsNavbar = ({ doc }: { doc: Doc<"documents"> }) => {
       type: "text/plain",
     });
     handleDownload(blob, `${doc.title}.txt`);
+  };
+  const handleOnPdfSave = () => {
+    const content = editor.getText();
+
+    const docPdf = new jsPDF({
+      orientation: "portrait",
+      unit: "pt",
+      format: "a4",
+    });
+
+    const pageWidth = docPdf.internal.pageSize.getWidth();
+    const margin = 40;
+    const textWidth = pageWidth - leftMargin - rightMargin;
+
+    const lines = docPdf.splitTextToSize(content, textWidth);
+
+    docPdf.text(lines, margin, 60);
+    docPdf.save(`${doc.title}.pdf`);
   };
 
   return (
@@ -136,7 +159,10 @@ const DocumentsNavbar = ({ doc }: { doc: Doc<"documents"> }) => {
                       <StickyNote />
                     </MenubarItem>
                     <MenubarSeparator />
-                    <MenubarItem className="flex justify-between items-center">
+                    <MenubarItem
+                      onClick={handleOnPdfSave}
+                      className="flex justify-between items-center"
+                    >
                       pdf
                       <StickyNote />
                     </MenubarItem>
