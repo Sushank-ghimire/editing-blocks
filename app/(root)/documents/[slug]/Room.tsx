@@ -53,16 +53,16 @@ export function Room({ children }: { children: ReactNode }) {
       }}
       resolveRoomsInfo={() => []}
       throttle={16}
-      publicApiKey={process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!}
-      // authEndpoint={async () => {
-      //   const authEndpoint = "/api/liveblocks-auth";
-      //   const room = params.slug;
-      //   const res = await fetch(authEndpoint, {
-      //     method: "POST",
-      //     body: JSON.stringify({ room }),
-      //   });
-      //   return await res.json();
-      // }}
+      authEndpoint={async () => {
+        const authEndpoint = "/api/liveblocks-auth";
+        const room = params.slug;
+        const res = await fetch(authEndpoint, {
+          method: "POST",
+          body: JSON.stringify({ room }),
+          credentials: "include",
+        });
+        return await res.json();
+      }}
     >
       <RoomProvider
         initialStorage={{ leftMargin: 50, rightMargin: 50 }}

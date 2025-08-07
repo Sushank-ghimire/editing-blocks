@@ -19,7 +19,6 @@ import {
   FileIcon,
   FileJson2,
   ItalicIcon,
-  PenIcon,
   PlusIcon,
   PrinterIcon,
   Redo,
@@ -29,7 +28,6 @@ import {
   TableIcon,
   TableOfContents,
   TextIcon,
-  Trash,
   UnderlineIcon,
   Undo,
 } from "lucide-react";
