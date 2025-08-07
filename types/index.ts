@@ -29,6 +29,7 @@ export interface ITemplate {
   id: string | number;
   label: string;
   logo: string;
+  initialContent: string;
 }
 
 export interface IDocuments {

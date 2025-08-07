@@ -34,7 +34,7 @@ const Templates = ({ template }: ITemplateProps) => {
   return (
     <CarouselItem
       onClick={() => {
-        handleClick(template.label, "");
+        handleClick(template.label, template.initialContent);
       }}
       key={template.id}
       className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5"

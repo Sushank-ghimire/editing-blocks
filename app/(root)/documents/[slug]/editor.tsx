@@ -39,16 +39,19 @@ import { DocumentsNavbar } from "@/components/index";
 
 interface IEditorProps {
   doc: Doc<"documents">;
+  initialContent: string | undefined;
 }
 
-const Tiptap = ({ doc }: IEditorProps) => {
+const Tiptap = ({ doc, initialContent }: IEditorProps) => {
   const { initializeEditor } = useEditorStore();
 
   const leftMargin = useStorage((root) => root.leftMargin);
 
   const rightMargin = useStorage((root) => root.rightMargin);
 
-  const liveblocks = useLiveblocksExtension();
+  const liveblocks = useLiveblocksExtension({
+    initialContent
+  });
 
   const editor = useEditor({
     immediatelyRender: false,

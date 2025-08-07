@@ -11,7 +11,7 @@ export const Document = ({ preLoadedDocument }: IDocumentProps) => {
   const doc = usePreloadedQuery(preLoadedDocument);
   return (
     <section className="min-h-screen w-screen">
-      <Editor doc={doc} />
+      <Editor doc={doc} initialContent={doc.initialContent} />
     </section>
   );
 };
